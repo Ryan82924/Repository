@@ -43,20 +43,23 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- The application will feature a list of to-do items associated with a user. (Remains persistent and is updated.)
+- The application features secure login over HTTPS.
+- The application will be responsive to the environment.
+- The application will have the ability to drag and drop tasks
+- The application will feature random facts from the web.
+- 
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Proper HTML will be used. There will be a login page and a to-do list page. 
+- **CSS** - CSS will be responsive, the color choice will be easy on the eyes and look professional. It also will have proper spacing. Provides the design for the tasks in the list and for the buttons as well as the facts. 
+- **React** - Allows the app to be dynamic, allowing the user to check and uncheck tasks, also allows for the fact to be fetched and displayed.
+- **Service** - Backend service that has a call to both an external API (the fun fact servers) and my own functions that accepts the data from the API and uses it appropriately. 
+- **DB/Login** - Stores login data and updated to-do list data associated with the login. Secure and cannot be accessed unless logged in. 
+- **WebSocket** - Pushes updates to the frontend in real time. Includes updates from my own functions of facts that were grabbed from the external API. 
 
 ## 🚀 AWS deliverable
 
