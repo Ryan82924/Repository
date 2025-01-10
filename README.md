@@ -26,7 +26,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Have you ever stared at a to-do list for minutes, even hours dreading the idea of having to do the tasks on the list. To-Facts makes doing items on a to-do list fun! It gives an interesting fact to a person after completing a task. They can be funny, interesting, useful, useless or just plain wacky facts. Doing items on your to-do list has never been so gratifying.
+Have you ever stared at a to-do list for minutes, even hours dreading the idea of having to do the tasks on the list. To-Facts makes doing items on a to-do list fun! It gives an interesting fact to a person after checking off a task. They can be funny, interesting, useful, or quirky facts. Doing items on your to-do list has never been so gratifying. To_Facts help you to stay on task and get things done, giving entertainment along the way with surprise facts!
 
 ### Design
 
@@ -43,23 +43,26 @@ sequenceDiagram
 
 ### Key features
 
-- The application will feature a list of to-do items associated with a user. (Remains persistent and is updated.)
-- The application features secure login over HTTPS.
-- The application will be responsive to the environment.
-- The application will have the ability to drag and drop tasks
-- The application will feature random facts from the web.
-- 
+- Features a list of to-do items associated with a user (Remains persistent and is updated)
+- Features secure login over HTTPS
+- Is responsive to the environment (Size changes with screen size)
+- User has the ability to drag and drop tasks
+- The application will feature a reward system with random facts pulled from the web
+- Ability to add and remove tasks, as well as to mark complete or incomplete
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Proper HTML used. There will be a login page and a to-do list page. 
-- **CSS** - CSS has responsive, the color choice is easy on the eyes and look professional. It also will have proper spacing. Tasks in the list looks good as well as the buttons and the facts.  
-- **React** - Allows the app to be dynamic, allowing the user to check and uncheck tasks and other features, also allows for fetched data like facts/login to be used. 
-- **Service** - Backend service that has a call to both an external API (the fun fact servers) and my own functions that accepts the data from the API and uses it appropriately. 
+- **HTML** - Proper HTML semantics used. There will be a login page for user authentication and a to-do list page for task management. 
+- **CSS** - CSS takes on a responsive, user-friendly and professional appearance. Tasks in the list looks good as well as the buttons and the facts. Tasks styled as interactive blocks and will visually change states when completed.  
+- **React** - Allows the app to be dynamic, allowing the user to interact with the app in real time and perform activities such as check and uncheck tasks. Ensures fetched data like facts/login are able to be used seamlessly from the backend to the user interface. 
+- **Service** - Backend service will manage API interactions including both third party API's and my own custom work. It will:  
+  1. Grab fun facts from the external API.
+  2. Process and return the data to the frontend.
+  3. Have custom functions that manage to-do list operations such as adding and deleting tasks.
 - **DB/Login** - Stores login data and updated to-do list data associated with the login. Secure and cannot be accessed unless logged in. 
-- **WebSocket** - Pushes updates to the frontend in real time. Includes updates from my own functions of facts that were grabbed from the external API. 
+- **WebSocket** - Pushes updates to the frontend in real time. Includes syncing to-do list changes across different devices if the same user is logged in. Alaso includes pushing fact updates to the frontend after task completion. 
 
 ## 🚀 AWS deliverable
 
