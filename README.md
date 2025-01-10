@@ -22,6 +22,8 @@ Have you ever stared at a to-do list for minutes, even hours dreading the idea o
 
 ![Design image](placeholder.png)
 
+![Test image login page](IMG_2235.jpeg)
+![Test image To-Do page](IMG_2236.jpeg)
 
 ```mermaid
 sequenceDiagram
