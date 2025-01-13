@@ -40,7 +40,7 @@ sequenceDiagram
 - Features secure login over HTTPS
 - Is responsive to the environment (Size changes with screen size)
 - User has the ability to drag and drop tasks
-- The application will feature a reward system with random facts pulled from the web
+- Implements a reward system that displays random facts pulled from the web upon task completion
 - Ability to add and remove tasks, as well as to mark complete or incomplete
 
 ### Technologies
@@ -54,10 +54,10 @@ I am going to use the required technologies in the following ways.
   1. Grab fun facts from the external API.
   2. Process and return the data to the frontend.
   3. Have custom functions that manage to-do list operations such as adding and deleting tasks.
-- **DB/Login** - Stores login data and updated to-do list data associated with the login. Secure and cannot be accessed unless logged in. 
-- **WebSocket** - Pushes updates to the frontend in real time. Includes syncing to-do list changes across different devices if the same user is logged in. Alaso includes pushing fact updates to the frontend after task completion. 
+- **DB/Login** - Stores login data and updated to-do list data associated with the login. Secure and cannot be accessed unless logged in. Tasks are private and will not be visible to other users. 
+- **WebSocket** - Pushes updates to the frontend in real time. Includes syncing to-do list changes across different devices if the same user is logged in. Also includes pushing fact updates to the frontend after task completion. 
 
-## 🚀 AWS deliverable
+<!--## 🚀 AWS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
@@ -131,4 +131,5 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
 - [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
 - [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [ ] **Application is fully functional** - I did not complete this part of the deliverable.-->
+
