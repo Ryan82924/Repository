@@ -18,10 +18,6 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 Have you ever stared at a to-do list for minutes, even hours dreading the idea of having to do the tasks on the list. To-Facts makes doing items on a to-do list fun! It gives an interesting fact to a person after checking off a task. They can be funny, interesting, useful, or quirky facts. Doing items on your to-do list has never been so gratifying. To_Facts help you to stay on task and get things done, giving entertainment along the way with surprise facts!
 
-### Design
-
-![Design image](placeholder.png)
-
 ### Login Page
 ![Test image login page](IMG_2256.jpeg)
 ### To-Do List Page
@@ -38,6 +34,7 @@ Have you ever stared at a to-do list for minutes, even hours dreading the idea o
 - Implements a reward system that displays random facts pulled from the web upon task completion
 - Ability to add and remove tasks, as well as to mark complete or incomplete
 - A live global leaderboard that displays number of tasks completed from all users
+ 
 
 ### Technologies
 
@@ -51,7 +48,7 @@ I am going to use the required technologies in the following ways.
   2. Process and return the data to the frontend.
   3. Have custom functions that manage to-do list operations such as adding and deleting tasks.
 - **DB/Login** - Stores login data and updated to-do list data associated with the login. Secure and cannot be accessed unless logged in. Tasks are private and will not be visible to other users. 
-- **WebSocket** - Collects data from all users and compiles them into a leaderboard which updates in real time as users complete tasks. 
+- **WebSocket** - Collects real-time data from all users and compiles them into a leaderboard which updates in real time as users complete tasks. 
 
 <!--## 🚀 AWS deliverable
 
