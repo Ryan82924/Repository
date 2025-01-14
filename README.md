@@ -54,8 +54,8 @@ I am going to use the required technologies in the following ways.
   1. Grab fun facts from the external API.
   2. Process and return the data to the frontend.
   3. Have custom functions that manage to-do list operations such as adding and deleting tasks.
-- **DB/Login** - Stores login data and updated to-do list data associated with the login. Secure and cannot be accessed unless logged in. Tasks are private and will not be visible to other users. 
-- **WebSocket** - Pushes updates to the frontend in real time. Includes syncing to-do list changes across different devices if the same user is logged in. Also includes pushing fact updates to the frontend after task completion. 
+- **DB/Login** - Stores login data and updated to-do list data associated with the login. Secure and cannot be accessed unless logged in. Tasks are private and will not be visible to other users. <!--Also stores task completed data, also pushes the highest task completed ones to a leaderboard html page? -->
+- **WebSocket** - Pushes updates to the frontend in real time. Includes syncing to-do list changes across different devices if the same user is logged in. <!--Also includes pushing fact updates to the frontend after task completion. --> Also allows user to compare amount of tasks completed with leaderboard data. <!--Ask if this is needed first. -->
 
 <!--## 🚀 AWS deliverable
 
