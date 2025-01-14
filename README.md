@@ -23,9 +23,11 @@ Have you ever stared at a to-do list for minutes, even hours dreading the idea o
 ![Design image](placeholder.png)
 
 ### Login Page
-![Test image login page](IMG_2235.jpeg)
+![Test image login page](IMG_2256.jpeg)
 ### To-Do List Page
-![Test image To-Do page](IMG_2236.jpeg)
+![Test image To-Do page](IMG_2259.jpeg)
+### Leaderboard Page
+![Test image To-Do page](IMG_2258.jpeg)
 
 ### Key features
 
