@@ -23,7 +23,7 @@ Have you ever stared at a to-do list for minutes, even hours dreading the idea o
 ### To-Do List Page
 ![To-Do page](IMG_2259.jpeg)
 ### Leaderboard Page
-![leaderboard page](IMG_2258.jpeg)
+![Leaderboard page](IMG_2258.jpeg)
 
 ### Key features
 
