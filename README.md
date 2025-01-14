@@ -19,11 +19,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 Have you ever stared at a to-do list for minutes, even hours dreading the idea of having to do the tasks on the list. To-Facts makes doing items on a to-do list fun! It gives an interesting fact to a person after checking off a task. They can be funny, interesting, useful, or quirky facts. Doing items on your to-do list has never been so gratifying. To_Facts help you to stay on task and get things done, giving entertainment along the way with surprise facts!
 
 ### Login Page
-![Test image login page](IMG_2256.jpeg)
+![login page](IMG_2256.jpeg)
 ### To-Do List Page
-![Test image To-Do page](IMG_2259.jpeg)
+![To-Do page](IMG_2259.jpeg)
 ### Leaderboard Page
-![Test image To-Do page](IMG_2258.jpeg)
+![leaderboard page](IMG_2258.jpeg)
 
 ### Key features
 
