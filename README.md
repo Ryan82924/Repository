@@ -49,7 +49,7 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - Proper HTML semantics used. There will be a login page for user authentication and a to-do list page for task management. 
 - **CSS** - CSS takes on a responsive, user-friendly and professional appearance. Tasks in the list looks good as well as the buttons and the facts. Tasks styled as interactive blocks and will visually change states when completed.  
-- **React** - Allows the app to be dynamic, allowing the user to interact with the app in real time and perform activities such as check and uncheck tasks. Ensures fetched data like facts/login are able to be used seamlessly from the backend to the user interface. 
+- **React** - Allows the app to be dynamic, allowing the user to interact with the app in real time and perform activities such as check and uncheck tasks. Ensures fetched data like facts/login are pulled from the backend to be used in the user interface. 
 - **Service** - Backend service will manage API interactions including both third party API's and my own custom work. It will:  
   1. Grab fun facts from the external API.
   2. Process and return the data to the frontend.
