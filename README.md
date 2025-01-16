@@ -1,5 +1,7 @@
 # To-Facts
-<!--[My Notes](notes.md)-->
+<!--[My Notes](notes.md)
+
+For the AWS Section. I learned a lot about how to set up a web server on the Amazon cloud. I learned that there are a lot of different types of domains. There are also a lot of rules you can use in the records sections which helps control the routing. This is somewhat similar to the redirects in WordPress. However it is a little bit different in that these rules can form the basis of the site and the site cannot always function without them. -->
 
 
 To-Facts is an application that gives unique, interesting facts pulled from the internet after the completion of a task. To-Facts helps users to be able to keep track of items on their to-do list while also helping motivate them to complete these items through a reward system that gives an interesting fact upon the completion of a task.  
@@ -50,12 +52,12 @@ I am going to use the required technologies in the following ways.
 - **DB/Login** - Stores login data and updated to-do list data associated with the login. Secure and cannot be accessed unless logged in. Tasks are private and will not be visible to other users. 
 - **WebSocket** - Collects real-time data from all users and compiles them into a leaderboard which updates in real time as users complete tasks. 
 
-<!--## 🚀 AWS deliverable
+ 🚀 AWS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
-
+- `[x]` **Server deployed and accessible with custom domain name** - [My server link](https://to-facts.click).
+<!--##
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
