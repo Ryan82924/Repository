@@ -1,7 +1,7 @@
 # To-Facts
 <!--[My Notes](notes.md)
 
-For the AWS Section. I learned a lot about how to set up a web server on the Amazon cloud. I learned that there are a lot of different types of domains. There are also a lot of rules you can use in the records sections which helps control the routing. This is somewhat similar to the redirects in WordPress. However it is a little bit different in that these rules can form the basis of the site and the site cannot always function without them. -->
+For  the AWS Section. I learned a lot about how to set up a web server on the Amazon cloud. I learned that there are a lot of different types of domains. There are also a lot of rules you can use in the records sections which helps control the routing. This is somewhat similar to the redirects in WordPress. However it is a little bit different in that these rules can form the basis of the site and the site cannot always function without them. -->
 
 
 To-Facts is an application that gives unique, interesting facts pulled from the internet after the completion of a task. To-Facts helps users to be able to keep track of items on their to-do list while also helping motivate them to complete these items through a reward system that gives an interesting fact upon the completion of a task.  
