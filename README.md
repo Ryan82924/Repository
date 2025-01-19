@@ -1,128 +1,83 @@
-# To-Facts
-<!--[My Notes](notes.md)
+# Simon
 
-For  the AWS Section. I learned a lot about how to set up a web server on the Amazon cloud. I learned that there are a lot of different types of domains. There are also a lot of rules you can use in the records sections which helps control the routing. This is somewhat similar to the redirects in WordPress. However it is a little bit different in that these rules can form the basis of the site and the site cannot always function without them. -->
+[My Notes](notes.md)
 
+In 1978 Milton-Bradley, now Hasbro, released an electronic game named Simon. It was cutting edge at the time since there were so few electronic games, and all the cool kids had one.
 
-To-Facts is an application that gives unique, interesting facts pulled from the internet after the completion of a task. To-Facts helps users to be able to keep track of items on their to-do list while also helping motivate them to complete these items through a reward system that gives an interesting fact upon the completion of a task.  
+We are going to build a peer to peer multiplayer web application modeled after Simon. We will build it together by adding new functionality every time we learn a new technology. The example version of code and production deployment for each iteration are available to you. Your job will be to review the example and then deploy it to your production environment. The goal is to make you think about every line of code. Ask, "why is it done this way?" and "Is there a better way?". You can then take what you have learned, or even portions of the Simon code, and apply it to your Startup application.
 
 ## 🚀 Specification Deliverable
 
+Simon is a simple game where you repeat a sequence of color flashes. The longer sequence you repeat the higher your score is.
+
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- `[x]` Proper use of Markdown
-- `[x]` A concise and compelling elevator pitch
-- `[x]` Description of key features
-- `[x]` Description of how you will use each technology
-- `[x]` One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-Have you ever stared at a to-do list for minutes, even hours dreading the idea of having to do the tasks on the list. To-Facts makes doing items on a to-do list fun! It gives an interesting fact to a person after checking off a task. They can be funny, interesting, useful, or quirky facts. Doing items on your to-do list has never been so gratifying. To_Facts help you to stay on task and get things done, giving entertainment along the way with surprise facts!
+A mind is a beautiful thing, but it needs stimulation. Lights, color, sound, and action. Simon give you hours of fun as you complete to remember the longest sequence of colors. See if you can top the charts with you efforts. Receive automatic notification of how your friends are doing.
 
-### Login Page
-![login page](IMG_2256.jpeg)
-### To-Do List Page
-![To-Do page](IMG_2259.jpeg)
-### Leaderboard Page
-![Leaderboard page](IMG_2258.jpeg)
+### Design
+
+![Design](designDiagram.png)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+```mermaid
+sequenceDiagram
+    actor User
+    User->>Login: Enter login information
+    Login->>About: See about information
+    About-->>Login: Login
+    About->>About: Read inspirational quote
+    Login->>Play: Start game
+    Play->>Play: repeat sequences
+    Play->>Play: View other player's game notifications
+    Play-->>Login: Logout
+    Login-->>Scores: view high scores
+```
 
 ### Key features
 
-- Features a list of to-do items associated with a user (Remains persistent and is updated)
-- Features secure login over HTTPS
-- Is responsive to the environment (Size changes with screen size)
-- User has the ability to drag and drop tasks
-- Implements a reward system that displays random facts pulled from the web upon task completion
-- Ability to add and remove tasks, as well as to mark complete or incomplete
-- A live global leaderboard that displays number of tasks completed from all users
- 
+- Login, logout, and register
+- See high scores
+- Receive notifications for other player's achievements
+- Play by repeating color sequences
+- See a description of the app
+- Read inspirational quotes
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Proper HTML semantics used. There will be a login page for user authentication, a to-do list page for task management and a leaderboard page that displays live task completion data. 
-- **CSS** - CSS takes on a responsive, user-friendly and professional appearance. Tasks in the list looks good as well as the buttons and the facts. Tasks styled as interactive blocks and will visually change states when completed.  Leaderboard positions will appear in neatly styled blocks as well.
-- **React** - Allows the app to be dynamic, allowing the user to interact with the app in real time and perform activities such as check and uncheck tasks. Ensures fetched data like facts/login are pulled from the backend to be used in the user interface. 
-- **Service** - Backend service will manage API interactions including both third party API's and my own custom work. It will:  
-  1. Grab fun facts from the external API.
-  2. Process and return the data to the frontend.
-  3. Have custom functions that manage to-do list operations such as adding and deleting tasks.
-- **DB/Login** - Stores login data and updated to-do list data associated with the login. Secure and cannot be accessed unless logged in. Tasks are private and will not be visible to other users. 
-- **WebSocket** - Collects real-time data from all users and compiles them into a leaderboard which updates in real time as users complete tasks. 
+- **HTML** - Four different views, login/register controls, play, scoreboard, and about.
+- **CSS** - Complementary color scheme, responsive design, button highlighting during play.
+- **React** - Single page application with routing between views, reactive user controls, and state hooks.
+- **Service** - Endpoints for authentication, storing/retrieving scores. Third party call to get inspirational quotes.
+- **DB/Login** - Stores authentication and scores.
+- **WebSocket** - Broadcast user's game notifications.
 
- 🚀 AWS deliverable
+## 🚀 AWS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- `[x]` **Server deployed and accessible with custom domain name** - [My server link](https://to-facts.click).
-<!--##
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://simon.cs260.click).
+
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
-
-## 🚀 CSS deliverable
-
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
-
-## 🚀 React part 1: Routing deliverable
-
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - Routing between login and voting components.
-
-## 🚀 React part 2: Reactivity
-
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
-
-## 🚀 Service deliverable
-
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint - I did not complete this part of the deliverable.
-
-## 🚀 DB/Login deliverable
-
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
-.
-
-## 🚀 WebSocket deliverable
-
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.-->
-
+- [x] **HTML pages** - Four different pages. One for each view. `index.html` (Login), `play.html`, `scores.html`, and `about.html`.
+- [x] **Proper HTML element usage** - I spent a lot of time learning about elements. I used header, footer, main, nav, img, a, fieldset, input, button, form, and many more.
+- [x] **Links** - Links between views.
+- [x] **Text** - About page has text.
+- [x] **3rd party API placeholder** - About page has a place to display an inspirational quote.
+- [x] **Images** - Image is displayed on the about page.
+- [x] **Login placeholder** - Placeholder for auth on the login page.
+- [x] **DB data placeholder** - High scores displayed on scores page.
+- [x] **WebSocket placeholder** - The play page has a text area that will show what other user notifications.
