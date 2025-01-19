@@ -15,8 +15,12 @@
 .site-name {font-size: 20px; font-weight: bold;}
 
 
-.site-nav {display: flex; justify-content:  space-between; width: 40%;
+.site-nav {display: flex; justify-content:  space-between; width: 20%; 
+color: white; 
 }
+.site-nav a{ text-decoration: underline; color: #a0c4ff; font-size: 16px;}
+.site-nav a:hover {color:aqua !important; text-decoration: underline !important;}
+.site-nav a:visited {color:#B39DDB; text-decoration:underline;}
 
 body {
     font-family: Arial, sans-serif;
