@@ -6,28 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simon</title>
     <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" /> 
+
   </head>
   <body>
-    <!-- Use header, main, and footer elements to give semantic structure -->
-    <header>
-      <h1>Simon<sup>&reg;</sup></h1>
+    <div class="top-bar">
+      <!-- Name of site on the left of top bar. Three urls to the right. -->
+      <span class="site-name">To-Facts</span>
+      <div class= "site-nav">
+        <a href="welcome.html" class = "right-link">Login</a>
+        <a href="To-Do.html" class="right-link">To-Do</a>
+        <a href="Leaderboard.html" class="right-link">Leaderboard</a>
 
-      <!-- Navigation elements -->
-      <nav>
-        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
-        <menu>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="play.html">Play</a></li>
-          <li><a href="scores.html">Scores</a></li>
-          <li><a href="about.html">About</a></li>
-        </menu>
-      </nav>
-
-      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
-      <hr />
-    </header>
-
+      </div>
+      
+    </div>
     <main>
+      <section>
+        <h2> Create a new task </h2>
+        <form method = "post" action="/add-task">
+          <label for="task-input">Task:</label>
+          <input type="text" id="task-input" name="task" required>
+          <button type="submit"> Add Task</button>
+        </form>
+      </section>
+      <section>
+        <h2> Your Tasks </h2>
+        <ul>
+          <li>
+            
+          </li>
+        </ul>
+
+
+
+
+
+      </section>
       <div class="players">
         Player:
         <span class="player-name">Mystery player</span>
@@ -97,10 +112,11 @@
     </main>
 
     <footer>
-      <hr />
-      <span class="text-reset">Author Name(s)</span>
-      <br />
-      <a href="https://github.com/webprogramming260/simon-html">GitHub</a>
+      <div class= "footer-bar"> 
+        
+        <a href="about.html" class="footer-link">About</a>
+        <a href="https://github.com/webprogramming260/simon-html" class ="footer-link">Source</a>
+      </div>
     </footer>
   </body>
 </html>
