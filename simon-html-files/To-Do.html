@@ -10,8 +10,8 @@
 
   </head>
   <body>
-    <div class="top-bar">
-      <!-- Name of site on the left of top bar. Three urls to the right. -->
+    <header class="top-bar">
+      <!-- Stylized header bar with custom elements.-->
       <span class="site-name">To-Facts</span>
       <div class= "site-nav">
         <a href="welcome.html" class = "right-link">Login</a>
@@ -20,7 +20,7 @@
 
       </div>
       
-    </div>
+    </header>
     <main>
       <section>
         <h2> Create a new task </h2>
@@ -34,82 +34,46 @@
         <h2> Your Tasks </h2>
         <ul>
           <li>
-            
+            <input type="checkbox" id="task-1" name="task-1">
+            <label for="task-1"> Task 1</label>
+            <button> Delete </button>
+          </li>
+          <li>
+            <input type="checkbox" id="task-2"name="task-2">
+            <label for="task-2"> Task 2</label>
+            <button> Delete </button>
+          </li>
+          <li>
+            <input type="checkbox" id="task-3"name="task-3">
+            <label for="task-3"> Task 3</label>
+            <button> Delete </button>
           </li>
         </ul>
+      </section>
 
-
-
-
+      <section>
+        <h2> Fun Fact</h2>
+        <p id = "third-party-api-placeholder"></p>
 
       </section>
-      <div class="players">
-        Player:
-        <span class="player-name">Mystery player</span>
-      </div>
-      <ul class="notification">
-        <li class="player-name">Tim started a new game</li>
-        <li class="player-name">Ada started a new game</li>
-        <li class="player-name">Tim scored 337</li>
-      </ul>
+      <section>
+        <p>screenshots of the app I was making it</p>
+        <img id="img-id-placeholder" scr="applicationss-web260.jpg" alt="screenshot of app">
+       
+      </section>
+      <section>
+        <h2> live updates</h2>
+        <p id = "websocket-id-placeholder"></p>
+      </section>
+      <section>
+        <h2>Stored Tasks</h2>
+        <p id="database-id-placeholder"></p>
+      </section>
+      </main>
 
-      <!-- More formatting with old style HTML -->
-      <br />
 
-      <div>
-        <label for="count">Score</label>
-        <input type="text" id="count" value="--" readonly />
-      </div>
 
-      <br />
 
-      <div>
-        <button>Reset</button>
-      </div>
-
-      <br />
-
-      <div>
-        <table>
-          <tr>
-            <td>
-              <button>
-                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-                  <!-- SVG
-                    M move <to x,y>
-                    Q quadratic curve <control point x,y> <to x,y>
-                -->
-                  <path d="M 95,5 95,95 5,95 Q 5,5 95,5" fill="green" />
-                </svg>
-              </button>
-            </td>
-            <td>
-              <button>
-                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-                  <path d="M5,5 5,95 95,95 Q 95,5 5,5" fill="red" />
-                </svg>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button>
-                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-                  <path d="M5,5 95,5 95,95 Q 5,95 5,5" fill="blue" />
-                </svg>
-              </button>
-            </td>
-            <td>
-              <button>
-                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-                  <path d="M95,5 5,5 5,95 Q 95,95 95,5" fill="yellow" />
-                </svg>
-              </button>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </main>
 
     <footer>
       <div class= "footer-bar"> 
