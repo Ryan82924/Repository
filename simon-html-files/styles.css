@@ -22,9 +22,29 @@ color: white;
 .site-nav a:hover {color:aqua !important; text-decoration: underline !important;}
 .site-nav a:visited {color:#B39DDB; text-decoration:underline;}
 
+
+.footer-bar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px
+}
+.footer-link {
+    text-decoration:none;
+    color: #a0c4ff;
+    font-size: 16px;
+    padding: 0 100px;
+    
+
+}
+.footer-link a:hover {color: aqua;}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+m
