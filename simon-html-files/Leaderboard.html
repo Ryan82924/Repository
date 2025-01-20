@@ -9,10 +9,10 @@
   </head>
   <body>
     <header class="top-bar">
-      <!-- Stylized header bar with custom elements. made sure it matched draft.-->
+      <!-- Stylized header with custom elements. made sure it matched draft.-->
 <span class="site-name">To-Facts</span>
 <div class= "site-nav">
-  <a href="welcome.html" class = "right-link">Login</a>
+  <a href="index.html" class = "right-link">Login</a>
   <a href="To-Do.html" class="right-link">To-Do</a>
   <a href="Leaderboard.html" class="right-link">Leaderboard</a>
 
@@ -25,31 +25,28 @@
         <h2>Leaderboard</h2> <!--will add css elements to box, center, color and just overall make the leaderboard look nice-->
         <div>
           <div>
-            <img id="img-id-placeholder" src="goldmedal.png" alt="screenshot of medal"/> <!-- will resize the medals with css so it fits in box and aligns with sketch-->
+            <img width="20px" id="img-id-placeholder" src="goldmedal.png" alt="screenshot of medal"/> <!-- may resize the medals with css so it fits in box and aligns with sketch-->
             <span> 1 (rank)</span>
-            <span> DoughnutLover222 (name)</span>
-            <span> 20 (score) </span>
+            <span id="rank-1-name"> DoughnutLover222 (placeholder for the first-ranked user's name. updated live via Websocket)</span>
+            <span id="rank-1-score"> 20 (placeholder for the first-ranked user's score. updated live via Websocket) </span>
           </div>
           <div>
-            <img id="img-id-placeholder" src="silvermedal.png" alt="screenshot of medal"/><!-- will resize the medals with css so it fits in box and aligns with sketch-->
+            <img width="20px" id="img-id-placeholder" src="silvermedal.png" alt="screenshot of medal"/><!-- may resize the medals with css so it fits in box and aligns with sketch-->
             <span> 2 (rank)</span>
-            <span> DoughnutHater111 (name)</span>
-            <span> 19 (score) </span>
+            <span id="rank-2-name"> DoughnutHater111 (placeholder for the second-ranked user's name. updated live via Websocket) </span>
+            <span id="rank-2-score"> 19 (placeholder for the second-ranked user's score. updated live via Websocket) </span>
           </div>
           <div>
-            <img id="img-id-placeholder" src="bronzemedal.png" alt="screenshot of medal"/><!-- will resize the medals with css so it fits in box and aligns with sketch-->
+            <img width="20px" id="img-id-placeholder" src="bronzemedal.png" alt="screenshot of medal"/><!-- may resize the medals with css so it fits in box and aligns with sketch-->
             <span> 3 (rank)</span> 
-            <span> DoughnutIndifferent333 (name)</span>
-            <span> 18 (score) </span>
-          </div>
+            <span id="rank-3-name"> DoughnutIndifferent333 (placeholder for the third-ranked user's name. updated live via Websocket)</span>
+            <span id="rank-3-score"> 18 (placeholder for the third-ranked user's score. updated live via Websocket) </span> 
+        
         </div>
         
       </section>
 
-      <section>
-        <h2>Websocket element (pulls from internet for live Update)</h2>
-        <p id="websocket-id-placeholder"></p>
-      </section>
+      
     </main>
 
     <footer>
