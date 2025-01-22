@@ -3,46 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scores</title>
+    <title>Leaderboard</title>
     <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="styles.css" /> 
   </head>
   <body>
     <header class="top-bar">
       <!-- Stylized header with custom elements. made sure it matched draft.-->
-<span class="site-name">To-Facts</span>
-<div class= "site-nav">
+<h2 class="site-name">To-Facts</h2>
+<nav class= "site-nav">
   <a href="index.html" class = "right-link">Login</a>
   <a href="To-Do.html" class="right-link">To-Do</a>
   <a href="Leaderboard.html" class="right-link">Leaderboard</a>
 
-</div>
+</nav>
 
 </header>
 
     <main>
-      <section>
+      
         <h2>Leaderboard</h2> <!--will add css elements to box, center, color and just overall make the leaderboard look nice-->
-        <div>
-          <div>
+        <section>
+          <div class="leaderboard-entry">
             <img width="20px" id="img-id-placeholder" src="goldmedal.png" alt="screenshot of medal"/> <!-- may resize the medals with css so it fits in box and aligns with sketch-->
             <span> 1 (rank)</span>
             <span id="rank-1-name"> DoughnutLover222 (placeholder for the first-ranked user's name. updated live via Websocket)</span>
             <span id="rank-1-score"> 20 (placeholder for the first-ranked user's score. updated live via Websocket) </span>
           </div>
-          <div>
+          <div class="leaderboard-entry">
             <img width="20px" id="img-id-placeholder" src="silvermedal.png" alt="screenshot of medal"/><!-- may resize the medals with css so it fits in box and aligns with sketch-->
             <span> 2 (rank)</span>
             <span id="rank-2-name"> DoughnutHater111 (placeholder for the second-ranked user's name. updated live via Websocket) </span>
             <span id="rank-2-score"> 19 (placeholder for the second-ranked user's score. updated live via Websocket) </span>
           </div>
-          <div>
+          <div class="leaderboard-entry">
             <img width="20px" id="img-id-placeholder" src="bronzemedal.png" alt="screenshot of medal"/><!-- may resize the medals with css so it fits in box and aligns with sketch-->
             <span> 3 (rank)</span> 
             <span id="rank-3-name"> DoughnutIndifferent333 (placeholder for the third-ranked user's name. updated live via Websocket)</span>
             <span id="rank-3-score"> 18 (placeholder for the third-ranked user's score. updated live via Websocket) </span> 
         
-        </div>
+          </div>
         
       </section>
 
@@ -50,11 +50,11 @@
     </main>
 
     <footer>
-      <div class= "footer-bar"> 
-        
+      <nav class= "footer-bar">
         <a href="about.html" class="footer-link">About</a>
-        <a href="https://github.com/webprogramming260/simon-html" class ="footer-link">Source</a>
-      </div>
+        <a href="https://github.com/Ryan82924/Repository" class ="footer-link">Source</a>
+
+      </nav>
     </footer>
   </body>
 </html>
