@@ -7,6 +7,7 @@
     <title>To-do</title>
     <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="styles.css" /> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
 
   </head>
   <body>
@@ -22,25 +23,25 @@
     </header>
     <main>
       <section>
-        <h2> Create a new task </h2>
-        <form method = "post" action="/add-task">
+        <h2 class = "task-create"> Create a new task </h2>
+        <form class = "task-create" method = "post" action="/add-task">
           <label for="task-input">Task:</label>
           <input type="text" id="task-input" name="task" required>
           <button type="submit"> Add Task</button>
         </form>
       </section>
       <section>
-        <h2> Your Tasks </h2>
-        <section>
-          <div> <!--will add styling later here to make it look boxed like the sketches-->        
+        <h2 class = "task-create"> Your Tasks </h2>
+        <section class ="task-create">
+          <div class = task-item> <!--will add styling later here to make it look boxed like the sketches-->        
             <span> Task 1 (placeholder for tasks pulled from database)</span>
             <input type="checkbox" id="task 1">
           </div>
-          <div> <!--will add styling later here to make it look boxed like the sketches-->        
+          <div class = task-item> <!--will add styling later here to make it look boxed like the sketches-->        
             <span> Task 2 (placeholder for tasks pulled from database)</span>
             <input type="checkbox" id="task 2">
           </div>
-          <div> <!--will add styling later here to make it look boxed like the sketches-->        
+          <div class = task-item> <!--will add styling later here to make it look boxed like the sketches-->        
             <span> Task 3 (placeholder for tasks pulled from database) </span>
             <input type="checkbox" id="task 3" >
           </div>
