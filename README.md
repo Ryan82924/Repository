@@ -57,7 +57,7 @@ I am going to use the required technologies in the following ways.
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - `[x]` **Server deployed and accessible with custom domain name** - [My server link](https://todo-facts.click).
-<!--##
+
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
@@ -71,7 +71,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ ] **Login placeholder** - I did not complete this part of the deliverable.
 - [ ] **DB data placeholder** - I did not complete this part of the deliverable.
 - [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
-
+<!--##
 ## 🚀 CSS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
