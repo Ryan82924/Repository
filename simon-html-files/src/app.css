@@ -49,6 +49,11 @@ body {
     display: flex;
     flex-direction: column;
 }
+.body {
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+  }
 
 .topmargins{margin-top: 20px;}
 .bottommargins{margin-bottom:20px;}
