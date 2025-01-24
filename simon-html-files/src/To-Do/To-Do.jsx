@@ -7,7 +7,7 @@ import '../app.css';
 export default function Todo(){ 
 
     return (
-    <div>
+    <div className='fullpage'>
     <Header />
     <main>
       <section>

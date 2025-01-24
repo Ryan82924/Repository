@@ -7,7 +7,7 @@ import '../app.css';
 export default function Login() {
 
     return (
-    <div>
+    <div className='fullpage'>
     <Header />
     <main className="centered">
     <h1 className="extrabottommargins extratopmargins size-increase" >Welcome to To-Do Facts</h1>

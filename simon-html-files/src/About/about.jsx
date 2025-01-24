@@ -7,7 +7,7 @@ import '../app.css';
 export default function About() {
 
     return (
-    <div>
+    <div className='fullpage'>
     <Header />
     <main>
       <p className = "fancy-text">picture of the app while I was making it</p>

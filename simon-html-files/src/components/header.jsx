@@ -6,7 +6,7 @@ export default function Header() {
     <h2 className="site-name">To-Facts</h2>
     <nav className= "site-nav">
         <NavLink to= "/" className="right-link"> Login </NavLink>
-        <NavLink to= "Todo" className="right-link"> To-do </NavLink>
+        <NavLink to= "/todo" className="right-link"> To-do </NavLink>
         <NavLink to ="/leaderboard" className="right-link"> Leaderboard </NavLink>
 
     </nav>

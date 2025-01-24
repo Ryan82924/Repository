@@ -7,7 +7,7 @@ import '../app.css';
 export default function Leaderboard() {
 
     return (
-    <div>
+    <div className='fullpage'>
     <Header />
     <main>
       
