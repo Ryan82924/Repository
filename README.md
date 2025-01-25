@@ -1,7 +1,14 @@
 # To-Facts
 <!--[My Notes](notes.md)
 
-For the AWS Section. I learned a lot about how to set up a web server on the Amazon cloud. I learned that there are a lot of different types of domains. There are also a lot of rules you can use in the records sections which helps control the routing. This is somewhat similar to the redirects in WordPress. However it is a little bit different in that these rules can form the basis of the site and the site cannot always function without them. -->
+For the AWS Section. I learned a lot about how to set up a web server on the Amazon cloud. I learned that there are a lot of different types of domains. There are also a lot of rules you can use in the records sections which helps control the routing. This is somewhat similar to the redirects in WordPress. However it is a little bit different in that these rules can form the basis of the site and the site cannot always function without them. 
+
+For the HTML section I learned a lot about using html to group components together, specifically making list like structuers. I learned that sometimes instead of using unordered lists or other actual list components its better to make div groups that are grouped together because it allows more functionality. I also learned a bit about HTML semantics. Such as sectioning div groups and other items and using nav around links.
+
+For the CSS section I learned a lot about using styling to make HTML components pretty. I learned that there are certain subtle differences that can give you the results you need. Like setting height to 100vh expands the height to fill screen while setting it to 100% doesn't. (Which I guess makes sense since vh = view height) I also learned a lot about CSS components and using them to get results on the HTMl components that look good. 
+
+For the React Part 1 I learned about using nav links to set up routing as a single page application. I also learned about establishing each HTML component as a React componen. 
+-->
 
 
 To-Facts is an application that gives unique, interesting facts pulled from the internet after the completion of a task. To-Facts helps users to be able to keep track of items on their to-do list while also helping motivate them to complete these items through a reward system that gives an interesting fact upon the completion of a task.  
