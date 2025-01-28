@@ -22,7 +22,12 @@ color: white;
 .site-nav a:hover {color:aqua !important; text-decoration: underline !important;}
 .site-nav a:visited {color:#B39DDB; text-decoration:underline;}
 
-
+@media (max-width: 825px) {
+    .site-nav{
+        flex-direction: column;
+    }
+    
+}
 .footer-bar{
     display:flex;
     justify-content: space-between;
@@ -121,8 +126,6 @@ background-color:azure; }
     background-color: #a0c4ff;
     text-align: center;
     width:720px;
-
-
 
 }
 
