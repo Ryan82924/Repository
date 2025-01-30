@@ -47,6 +47,14 @@ color: white;
 }
 .footer-link:hover {color: aqua; text-decoration: underline;}
 
+@media (max-height: 825px) {
+    .footer-bar{
+        display: flex;
+    }
+    
+}
+
+
 html, body {
     font-family: "Trirong", serif;
     margin: 0;
