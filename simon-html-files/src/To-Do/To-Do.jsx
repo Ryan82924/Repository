@@ -19,20 +19,17 @@ export default function Todo(){
     }
     setTasks(prevTask => [...prevTask, newTask]);
     setTaskText("");
-  
-    function checkTask(id){
-    let updatedtask = tasks.map(task => task.id === id)
-      if (task)
-        return true
-      else{
-        return false
-
-      setTasks(updatedtask)
-
-
-      }
-
   }
+  
+  function checkTask(id){
+    setTasks(prevTasks =>{
+      prevTasks.map(task=>
+        if (task.id === id){
+          if 
+        }
+      )
+    );
+  }}
 
   
 
@@ -42,7 +39,7 @@ export default function Todo(){
 
 
 
-  }
+  
 
 
 
@@ -76,7 +73,7 @@ export default function Todo(){
 
             ))}
             </section>
-            </section>
+          </section>
             
             
             
