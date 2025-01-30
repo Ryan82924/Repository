@@ -6,15 +6,18 @@ import '../app.css';
 
 export default function Todo(){ 
   const [tasks, setTasks] = useState([]);
+  const [taskText, setTaskText] = useState("");
 
   function addTask(taskText) {
+    
     let newTask = {
       id: Date.now(),
-      text: tasktext,
+      text: taskText,
       completed: false
 
     }
     setTasks(prevTask => [...prevTask, newTask]);
+    setTaskText("");
   function checkTask(id){
     id
 
@@ -42,15 +45,16 @@ export default function Todo(){
       <main>
         <section>
           <h2 className = "task-create"> Create a new task </h2>
-          <form className = "task-create" method = "post" action="/add-task">
+          <form className = "task-create" method = "post" action="/add-task" onSubmit={(e) => {e.preventDefault(); addTask(taskText)}}>
             <label htmlFor ="task-input">Task:</label>
-            <input type="text" id="task-input" name="task" required/>
+            <input type="text" id="task-input" name="task" value = {taskText} onChange={(e) => setTaskText(e.target.value)} required/>
             <button type="submit"> Add Task</button>
           </form>
         </section>
         <section>
           <h2 className = "task-create"> Your Tasks </h2>
           <section className ="task-create">
+            
             <div className = "task-item"> 
               <span> Task 1 (placeholder for tasks pulled from database)</span>
               <input type="checkbox" id="task1" checked = {isChecked} onChange = {handleChange} />
@@ -89,5 +93,5 @@ export default function Todo(){
 
 
 
-}
+
     
