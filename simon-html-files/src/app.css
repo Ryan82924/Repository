@@ -146,3 +146,8 @@ background-color:azure; }
     flex-direction: column; 
     height: 100vh;  
   }
+
+
+  .completedTask {
+    background-color: #e6ffe3 !important;
+  }
