@@ -54,10 +54,22 @@ export default function Todo(){
         <section>
           <h2 className = "task-create"> Your Tasks </h2>
           <section className ="task-create">
+            {tasks.map((task) => (
+              <div key={task.id} className = "task-item">
+                <span>{task.text}</span>
+                <input type="checkbox" id={task.id} checked = {task.completed} onChange = {handleChange} />
+              </div>
+
+            ))}
             
-            <div className = "task-item"> 
+            
+            
+            
+            
+            
+            /*<div className = "task-item"> 
               <span> Task 1 (placeholder for tasks pulled from database)</span>
-              <input type="checkbox" id="task1" checked = {isChecked} onChange = {handleChange} />
+              
             </div>
             <p className = "less-spacing"> Fun Fact (pulled from third party api) </p>
             <p id = "third-party-api-placeholder"></p>
@@ -74,7 +86,7 @@ export default function Todo(){
             <p className = "less-spacing"> Fun Fact (pulled from third party api) </p>
             <p id = "third-party-api-placeholder"></p>
           </section>
-         </section>
+         </section> */
   
           
             
