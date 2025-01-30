@@ -101,6 +101,7 @@ background-color:azure; }
     box-sizing: border-box;
     background-color: #a0c4ff;
     width:fit-content;
+    margin-top: 5px;
 }
 .leaderboard-entry{
 

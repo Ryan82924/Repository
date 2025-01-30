@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/header'
 import Footer from '../components/footer';
+import classNames from 'classnames';
 import '../app.css';
 
 
@@ -18,12 +19,17 @@ export default function Todo(){
     }
     setTasks(prevTask => [...prevTask, newTask]);
     setTaskText("");
-  function checkTask(id){
-    let task = tasks.find(task => task.id === id)
-      if (task.completed === true)
+  
+    function checkTask(id){
+    let updatedtask = tasks.map(task => task.id === id)
+      if (task)
         return true
       else{
         return false
+
+      setTasks(updatedtask)
+
+
       }
 
   }
