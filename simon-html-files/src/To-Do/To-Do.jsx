@@ -19,7 +19,12 @@ export default function Todo(){
     setTasks(prevTask => [...prevTask, newTask]);
     setTaskText("");
   function checkTask(id){
-    id
+    let task = tasks.find(task => task.id === id)
+      if (task.completed === true)
+        return true
+      else{
+        return false
+      }
 
   }
 
@@ -55,19 +60,24 @@ export default function Todo(){
           <h2 className = "task-create"> Your Tasks </h2>
           <section className ="task-create">
             {tasks.map((task) => (
-              <div key={task.id} className = "task-item">
+              <div key={task.id}
+              className = {classNames('task-item', {
+                  'completed': task.completed,
+                   'not-completed':!task.completed})}>
                 <span>{task.text}</span>
-                <input type="checkbox" id={task.id} checked = {task.completed} onChange = {handleChange} />
+                <input type="checkbox" id={task.id} checked = {task.completed} onChange={() => checkTask(task.id)}/>
               </div>
 
             ))}
+            </section>
+            </section>
             
             
             
             
             
             
-            /*<div className = "task-item"> 
+            {/*<div className = "task-item"> 
               <span> Task 1 (placeholder for tasks pulled from database)</span>
               
             </div>
@@ -86,7 +96,7 @@ export default function Todo(){
             <p className = "less-spacing"> Fun Fact (pulled from third party api) </p>
             <p id = "third-party-api-placeholder"></p>
           </section>
-         </section> */
+         </section> */}
   
           
             
