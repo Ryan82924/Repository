@@ -17,19 +17,28 @@ export default function Todo(){
       completed: false
 
     }
-    setTasks(prevTask => [...prevTask, newTask]);
-    setTaskText("");
+    /*setTasks(prevTask => [...prevTask, newTask]);*/
+    setTasks(prevTasks =>{
+      let updatedTasks = prevTasks.slice()
+      updatedTasks.push(newTask)
+      return updatedTasks
+
+    })
+    setTaskText("")
   }
   
   function checkTask(id){
     setTasks(prevTasks =>{
-      prevTasks.map(task=>
+      return prevTasks.map(task=>{
         if (task.id === id){
-          if 
-        }
-      )
-    );
-  }}
+          let updatedTask = Object.assign({}, task)
+          updatedTask.completed = !task.completed;
+          return updatedTask
+          }
+          return task
+        });
+      });
+  }
 
   
 
