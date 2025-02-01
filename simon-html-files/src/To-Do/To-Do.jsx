@@ -74,7 +74,7 @@ export default function Todo(){
             {tasks.map((task) => (
               <div key={task.id}
               className = {classNames('task-item', {
-                  'completed': task.completed,
+                  'completedTask': task.completed,
                    'not-completed':!task.completed})}>
                 <span>{task.text}</span>
                 <input type="checkbox" id={task.id} checked = {task.completed} onChange={() => checkTask(task.id)}/>
