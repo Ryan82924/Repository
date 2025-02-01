@@ -45,7 +45,8 @@ export default function Login() {
           <div>
             <input className ="topmargins size-increase" type="password" placeholder="password (database placeholder)" value = {password} onChange={(e) => setPassword(e.target.value)} />
           </div>
-          <button type="submit" className = "extratopmargins extrabottommargins size-increase">Login</button>
+          <button type="submit" className = "extratopmargins extrabottommargins size-increase coolColoredButtons somePaddingOnTheSides">Login</button>
+          <button type="submit" className = "extratopmargins extrabottommargins size-increase coolColoredButtons somePaddingOnTheSides">Create</button>
           </form>
       </section>
       

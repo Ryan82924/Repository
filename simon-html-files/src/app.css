@@ -148,7 +148,32 @@ background-color:azure; }
     height: 100vh;  
   }
 
-
+.checkboxTask{
+    width: 18px;
+    height: 18px;
+}
   .completedTask {
     background-color: #e6ffe3 !important;
   }
+
+  .reduceTextSizeAndRoundedBorders {
+    font-size: 10px;
+    border-radius: 8px;
+  }
+  .coolColoredButtons{
+    background-color: #333;
+    color:white;
+
+  }
+  .coolColoredButtons:hover{
+    background-color: black !important;
+  }
+
+.somePaddingOnTheSides{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.lessPaddingOnTheSides{
+    margin-left: 5px;
+    margin-right: 5px;
+}

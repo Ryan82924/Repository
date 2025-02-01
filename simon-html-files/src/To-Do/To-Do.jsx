@@ -17,7 +17,6 @@ export default function Todo(){
       completed: false
 
     }
-    /*setTasks(prevTask => [...prevTask, newTask]);*/
     setTasks(prevTasks =>{
       let updatedTasks = prevTasks.slice()
       updatedTasks.push(newTask)
@@ -38,6 +37,16 @@ export default function Todo(){
           return task
         });
       });
+  }
+
+
+  function removeTask(taskId) {
+    
+    
+    setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId)
+
+    )
+    
   }
 
   
@@ -65,7 +74,7 @@ export default function Todo(){
           <form className = "task-create" method = "post" action="/add-task" onSubmit={(e) => {e.preventDefault(); addTask(taskText)}}>
             <label htmlFor ="task-input">Task:</label>
             <input type="text" id="task-input" name="task" value = {taskText} onChange={(e) => setTaskText(e.target.value)} required/>
-            <button type="submit"> Add Task</button>
+            <button type="submit" className='coolColoredButtons'> Add Task</button>
           </form>
         </section>
         <section>
@@ -77,7 +86,8 @@ export default function Todo(){
                   'completedTask': task.completed,
                    'not-completed':!task.completed})}>
                 <span>{task.text}</span>
-                <input type="checkbox" id={task.id} checked = {task.completed} onChange={() => checkTask(task.id)}/>
+                <input type="checkbox" id={task.id} checked = {task.completed} onChange={() => checkTask(task.id)} className = "checkboxTask lessPaddingOnTheSides"/>
+                <button onClick = {() =>removeTask(task.id)} className = "reduceTextSizeAndRoundedBorders coolColoredButtons lessPaddingOnTheSides"> Remove </button>
               </div>
 
             ))}
