@@ -20,6 +20,12 @@ export default function Todo(){
     setTasks(prevTasks =>{
       let updatedTasks = prevTasks.slice()
       updatedTasks.push(newTask)
+
+      localStorage.setItem('task', JSON.stringify(updatedTasks))
+
+      
+
+
       return updatedTasks
 
     })
@@ -30,7 +36,7 @@ export default function Todo(){
     setTasks(prevTasks =>{
       return prevTasks.map(task=>{
         if (task.id === id){
-          let updatedTask = Object.assign({}, task)
+          let updatedTask = Object.assign([], task)
           updatedTask.completed = !task.completed;
           return updatedTask
           }
@@ -43,12 +49,20 @@ export default function Todo(){
   function removeTask(taskId) {
     
     
-    setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId)
+    setTasks(prevTasks => {
+     let updatedTasks = prevTasks.filter(task => task.id !== taskId)
+    
+    
+      localStorage.setItem('task', JSON.stringify(updatedTasks))
 
-    )
+      return updatedTasks
+
+
+  })
     
   }
-
+  
+  
   
 
   
