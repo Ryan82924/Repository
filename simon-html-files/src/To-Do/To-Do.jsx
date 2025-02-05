@@ -8,60 +8,66 @@ import '../app.css';
 export default function Todo(){ 
   const [tasks, setTasks] = useState([]);
   const [taskText, setTaskText] = useState("");
+  const [Checked, setChecked] = useState(false);
 
   function addTask(taskText) {
-    
     let newTask = {
       id: Date.now(),
       text: taskText,
       completed: false
 
     }
-    setTasks(prevTasks =>{
-      let updatedTasks = prevTasks.slice()
-      updatedTasks.push(newTask)
+    
 
-      localStorage.setItem('task', JSON.stringify(updatedTasks))
-
+    setTasks(prevTasks => 
+      {let newArray = prevTasks.slice(); 
+        newArray.push(newTask)
       
+      localStorage.setItem('task', JSON.stringify(newArray))
+      return newArray
 
-
-      return updatedTasks
 
     })
-    setTaskText("")
+    
   }
-  
-  function checkTask(id){
-    setTasks(prevTasks =>{
-      return prevTasks.map(task=>{
-        if (task.id === id){
-          let updatedTask = Object.assign([], task)
-          updatedTask.completed = !task.completed;
-          return updatedTask
-          }
-          return task
-        });
-      });
+    
+    
+  function checkTask(id, event){
+    
+    setTasks(prevTasks => {
+      
+      let newArray = prevTasks.slice()
+      return newArray.map( task =>{
+        if (task.id === id)
+          task.completed = !task.completed
+        return task
+      }
+      
+      
+
+      )
+      
+    })
   }
+    
+
+    
 
 
   function removeTask(taskId) {
     
     
     setTasks(prevTasks => {
-     let updatedTasks = prevTasks.filter(task => task.id !== taskId)
+    let newArray = prevTasks.slice()
+    let index = newArray.findIndex(task => task.id === taskId)
+    if (index !==-1){
+      newArray.splice(index,1);
     
-    
-      localStorage.setItem('task', JSON.stringify(updatedTasks))
-
-      return updatedTasks
-
-
+    }
+    localStorage.setItem('task', JSON.stringify(newArray))
+    return newArray
   })
-    
-  }
-  
+}
   
   
 
@@ -146,10 +152,7 @@ export default function Todo(){
     </div>
     )
   }
-      
+
+
   
 
-
-
-
-    
