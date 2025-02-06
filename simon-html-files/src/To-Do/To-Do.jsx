@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Header from '../components/header'
 import Footer from '../components/footer';
+
+import TaskSubmission from './taskSubmissions'
 import classNames from 'classnames';
 import '../app.css';
 
@@ -89,14 +91,14 @@ export default function Todo(){
       <div className='fullpage'>
       <Header />
       <main>
-        <section>
-          <h2 className = "task-create"> Create a new task </h2>
-          <form className = "task-create" method = "post" action="/add-task" onSubmit={(e) => {e.preventDefault(); addTask(taskText)}}>
-            <label htmlFor ="task-input">Task:</label>
-            <input type="text" id="task-input" name="task" value = {taskText} onChange={(e) => setTaskText(e.target.value)} required/>
-            <button type="submit" className='coolColoredButtons'> Add Task</button>
-          </form>
-        </section>
+
+      
+        
+        
+        <TaskSubmission setTasks = {setTasks} taskText = {taskText} setTaskText = {setTaskText}/>
+
+
+
         <section>
           <h2 className = "task-create"> Your Tasks </h2>
           <section className ="task-create">
@@ -111,7 +113,7 @@ export default function Todo(){
               </div>
 
             ))}
-            </section>
+            </section> 
           </section>
             
             
@@ -151,7 +153,7 @@ export default function Todo(){
     <Footer/>
     </div>
     )
-  }
+}
 
 
   
