@@ -1,19 +1,11 @@
 import React from 'react';
-import Header from '../components/header';
-import Footer from '../components/footer';
-import {CurrentUser} from './currentleaderboarduser';
-import {LeaderboardPositions} from './leaderboardpositions';
 import '../app.css';
 
 
-export default function Leaderboard() {
-
-    return (
-    <div className='fullpage'>
-    <Header />
-    <main>
-      
-        {/*<h2 className = "centered">Leaderboard</h2> 
+export function LeaderboardPositions() {
+    return(
+        <div>
+        <h2 className = "centered">Leaderboard</h2> 
         <section>
           <div className="leaderboard-entry somePaddingOnTheSides" >
             <img width="20px" id="img-id-placeholder" src="goldmedal.png" alt="screenshot of medal"/> 
@@ -35,20 +27,8 @@ export default function Leaderboard() {
         
           </div>
         
-      </section>*/}
-      <LeaderboardPositions/>
-
-      {/*<div className="leaderboard-entry-current-user">
-        <span> Unranked </span> 
-        <span id="rank-3-name"> Current User (placeholder for the Current user's name. updated live via Websocket)</span>
-        <span id="rank-3-score"> 15 (placeholder for the Current user's tasks completed. updated live via Websocket) </span> 
-    
-      </div>*/}
-      <CurrentUser />
-
-      
-    </main>
-  <Footer/>
-  </div>
+      </section>
+      </div>
     )
+
 }
