@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/header'
 import Footer from '../components/footer';
-
+import  TaskItem  from './TaskItem';
 import TaskSubmission from './taskSubmissions'
 import classNames from 'classnames';
 import '../app.css';
@@ -12,64 +12,13 @@ export default function Todo(){
   const [taskText, setTaskText] = useState("");
   const [Checked, setChecked] = useState(false);
 
-  function addTask(taskText) {
-    let newTask = {
-      id: Date.now(),
-      text: taskText,
-      completed: false
-
-    }
-    
-
-    setTasks(prevTasks => 
-      {let newArray = prevTasks.slice(); 
-        newArray.push(newTask)
-      
-      localStorage.setItem('task', JSON.stringify(newArray))
-      return newArray
-
-
-    })
-    
-  }
-    
-    
-  function checkTask(id, event){
-    
-    setTasks(prevTasks => {
-      
-      let newArray = prevTasks.slice()
-      return newArray.map( task =>{
-        if (task.id === id)
-          task.completed = !task.completed
-        return task
-      }
-      
-      
-
-      )
-      
-    })
-  }
+  
     
 
     
 
 
-  function removeTask(taskId) {
-    
-    
-    setTasks(prevTasks => {
-    let newArray = prevTasks.slice()
-    let index = newArray.findIndex(task => task.id === taskId)
-    if (index !==-1){
-      newArray.splice(index,1);
-    
-    }
-    localStorage.setItem('task', JSON.stringify(newArray))
-    return newArray
-  })
-}
+ 
   
   
 
@@ -99,7 +48,7 @@ export default function Todo(){
 
 
 
-        <section>
+        {/*<section>
           <h2 className = "task-create"> Your Tasks </h2>
           <section className ="task-create">
             {tasks.map((task) => (
@@ -114,7 +63,8 @@ export default function Todo(){
 
             ))}
             </section> 
-          </section>
+          </section> */}
+          
             
             
             
@@ -141,6 +91,7 @@ export default function Todo(){
             <p id = "third-party-api-placeholder"></p>
           </section>
          </section> */}
+         <TaskItem setTasks={setTasks} tasks= {tasks}/>
   
           
             
