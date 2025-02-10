@@ -2,26 +2,14 @@ import React, { useState } from 'react';
 import Header from '../components/header'
 import Footer from '../components/footer';
 import { useNavigate } from 'react-router-dom';
+import doLogin from './LoginJSX';
 import '../app.css';
 export default function Login() {
   const [username, setUsername] = React.useState('')
   const [password, setPassword] = React.useState('')
   const navigate = useNavigate();
 /* java script  functions */
-  function doLogin(event){
-    
-    event.preventDefault();
-    console.log('logging in')
-    if (username === "validUsername" && password === "validPassword"){
-      navigate("/todo");
-    } 
-    else {
-      alert("Invalid password/user")
-    }
-
-      
-    
-  }
+  
 
 
 
