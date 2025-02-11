@@ -26,7 +26,8 @@ export default function Login() {
       <h1 className="extrabottommargins extratopmargins size-increase" >Welcome to To-Do Facts</h1>
       
       <section>
-        <form onSubmit={doLogin}>
+        <form onSubmit={(e) => doLogin(e, username, password, navigate)}>
+
           <div>
             <input className = "bottommargins size-increase" type="text" id="username" placeholder = "username" name="username" value = {username} onChange={(e) => setUsername(e.target.value)} /> 
           </div>
