@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
 import '../app.css';
 
 export default function TaskItem({setTasks, tasks}){
@@ -49,9 +48,7 @@ export default function TaskItem({setTasks, tasks}){
                   <section className ="task-create">
                     {tasks.map((task) => (
                       <div key={task.id}
-                      className = {classNames('task-item', {
-                          'completedTask': task.completed,
-                           'not-completed':!task.completed})}>
+                      className = {task.completed ? 'completedTask' : 'task-item'} >
                         <span>{task.text}</span>
                         
                         <input type="checkbox" id={task.id} checked = {task.completed} onChange={() => {console.log("uwiqbiuwqw"); checkTask(task.id)}} className = "checkboxTask lessPaddingOnTheSides"/>

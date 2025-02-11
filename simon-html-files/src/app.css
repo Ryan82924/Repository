@@ -154,6 +154,15 @@ background-color:azure; }
 }
   .completedTask {
     background-color: #e6ffe3 !important;
+    display: inline-flex;
+    text-align: center;
+    align-items: center;
+    font-size: 16; padding: 6px 20px;
+    border:2px solid #333; 
+    box-sizing: border-box;
+
+    width:fit-content;
+    margin-top: 5px;
   }
 
   .reduceTextSizeAndRoundedBorders {
