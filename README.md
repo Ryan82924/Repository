@@ -7,7 +7,9 @@ For the HTML section I learned a lot about using html to group components togeth
 
 For the CSS section I learned a lot about using styling to make HTML components pretty. I learned that there are certain subtle differences that can give you the results you need. Like setting height to 100vh expands the height to fill screen while setting it to 100% doesn't. (Which I guess makes sense since vh = view height) I also learned a lot about CSS components and using them to get results on the HTMl components that look good. 
 
-For the React Part 1 I learned about using nav links to set up routing as a single page application. I also learned about establishing each HTML component as a React componen. 
+For the React Part 1 I learned about using nav links to set up routing as a single page application. I also learned about establishing each HTML component as a React component I also learned a lot about modularization as well.
+
+For React Part 2 I learned a lot about the syntax requirements (syntax errors/debugging took the most amount of time). (Unfinished)
 -->
 
 
@@ -69,35 +71,35 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x ] **HTML pages** - I did not complete this part of the deliverable.
-- [ x] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ x] **Links** - I did not complete this part of the deliverable.
-- [x ] **Text** - I did not complete this part of the deliverable.
-- [x ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [x ] **Images** - I did not complete this part of the deliverable.
-- [ x] **Login placeholder** - I did not complete this part of the deliverable.
-- [ x] **DB data placeholder** - I did not complete this part of the deliverable.
-- [x ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x ] **HTML pages** - I did complete this part of the deliverable.
+- [ x] **Proper HTML element usage** - I did complete this part of the deliverable.
+- [ x] **Links** - I did complete this part of the deliverable.
+- [x ] **Text** - I did complete this part of the deliverable.
+- [x ] **3rd party API placeholder** - I did complete this part of the deliverable.
+- [x ] **Images** - I did complete this part of the deliverable.
+- [ x] **Login placeholder** - I did complete this part of the deliverable.
+- [ x] **DB data placeholder** - I did complete this part of the deliverable.
+- [x ] **WebSocket placeholder** - I did complete this part of the deliverable.
 
 ## 🚀 CSS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [x ] **Navigation elements** - I did not complete this part of the deliverable.
-- [x ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [x ] **Application elements** - I did not complete this part of the deliverable.
-- [x ] **Application text content** - I did not complete this part of the deliverable.
-- [x ] **Application images** - I did not complete this part of the deliverable.
-<!--##
+- [x ] **Header, footer, and main content body** - I did complete this part of the deliverable.
+- [x ] **Navigation elements** - I did complete this part of the deliverable.
+- [x ] **Responsive to window resizing** - I did complete this part of the deliverable.
+- [x ] **Application elements** - I did complete this part of the deliverable.
+- [x ] **Application text content** - I did complete this part of the deliverable.
+- [x ] **Application images** - I did complete this part of the deliverable.
+
 ## 🚀 React part 1: Routing deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - Routing between login and voting components.
-
+- [ x ] **Bundled using Vite** - I did complete this part of the deliverable.
+- [ x ] **Components** - I did complete this part of the deliverable.
+- [ x ] **Router** - Routing between login and voting components.
+<!--##
 ## 🚀 React part 2: Reactivity
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.

@@ -32,7 +32,7 @@ export default function TaskSubmission({setTasks,taskText,setTaskText}){
 
           
           <h2 className = "task-create"> Create a new task </h2>
-          <form className = "task-create" method = "post" action="/add-task" onSubmit={(e) => {e.preventDefault(); addTask(taskText)}}>
+          <form className = "task-create" method = "post" onSubmit={(e) => {e.preventDefault(); addTask(taskText)}}>
             <label htmlFor ="task-input">Task:</label>
             <input type="text" id="task-input" name="task" value = {taskText} onChange={(e) => setTaskText(e.target.value)} required/>
             <button type="submit" className='coolColoredButtons'> Add Task</button>

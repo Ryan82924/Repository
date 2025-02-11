@@ -6,7 +6,8 @@ export default function doLogin(event){
     
     event.preventDefault();
     console.log('logging in')
-    if (username === "validUsername" && password === "validPassword"){
+    if (username === "validUsername" && password === "validPassword"){ /*will 
+      replaces with fetches from db */
       navigate("/todo");
     } 
     else {
