@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../app.css';
 
-export default function TaskItem({setTasks, tasks}){
+export default function TaskItem({setTasks, tasks, setScore, score}){
 
     function checkTask(id){
     
@@ -11,6 +11,13 @@ export default function TaskItem({setTasks, tasks}){
           return newArray.map( task =>{
             if (task.id === id)
               task.completed = !task.completed
+              if (task.completed){
+                setScore(score+1)
+              }
+              if (!task.completed){
+                setScore(score-1)
+              }
+
             return task
           }
           
@@ -20,6 +27,7 @@ export default function TaskItem({setTasks, tasks}){
           
         })
       }
+      
         
     
         

@@ -11,6 +11,7 @@ export default function Todo(){
   const [tasks, setTasks] = useState([]);
   const [taskText, setTaskText] = useState("");
   const [Checked, setChecked] = useState(false);
+  const [score, setScore] = useState(0);
 
   
     
@@ -91,7 +92,7 @@ export default function Todo(){
             <p id = "third-party-api-placeholder"></p>
           </section>
          </section> */}
-         <TaskItem setTasks={setTasks} tasks= {tasks}/>
+         <TaskItem setTasks={setTasks} tasks= {tasks} setScore={setScore} score={score}/>
   
           
             
