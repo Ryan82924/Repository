@@ -10,16 +10,20 @@ export default function TaskItem({setTasks, tasks, setScore, score}){
           let newArray = prevTasks.slice()
           return newArray.map( task =>{
             if (task.id === id)
-              task.completed = !task.completed
-              if (task.completed){
-                setScore(score+1)
+              {
+                let prevComplete = task.completed
+                task.completed = !task.completed
+                
+
+              if (!prevComplete){
+                setScore(score =>score+1)
               }
-              if (!task.completed){
-                setScore(score-1)
+              if (prevComplete){
+                setScore(score=> score-1)
               }
 
             return task
-          }
+          }}
           
           
     
