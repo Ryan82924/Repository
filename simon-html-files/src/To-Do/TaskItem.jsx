@@ -8,7 +8,7 @@ export default function TaskItem({setTasks, tasks, setScore, score}){
         setTasks(prevTasks => {
           
           let newArray = prevTasks.slice()
-          return newArray.map( task =>{
+          let updatedArray = newArray.map( task =>{
             if (task.id === id)
               {
                 let prevComplete = task.completed
@@ -16,21 +16,29 @@ export default function TaskItem({setTasks, tasks, setScore, score}){
                 
 
               if (!prevComplete){
-                setScore(score =>score+1)
+                setScore(prevScore => {
+                  console.log(prevScore+1) 
+                  return prevScore +1
+                })
               }
               if (prevComplete){
-                setScore(score=> score-1)
+                setScore(prevScore=> {
+                  console.log(prevScore-1)
+                  return prevScore-1
+                })
               }
+            }
+
+
+            
+
+            
 
             return task
-          }}
-          
-          
-    
-          )
-          
-        })
-      }
+          }); localStorage.setItem('task', JSON.stringify(updatedArray))  
+        return updatedArray;
+      })
+    }
       
         
     
