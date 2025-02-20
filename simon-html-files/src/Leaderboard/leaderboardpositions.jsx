@@ -1,5 +1,9 @@
 import React from 'react';
+import {scores, setScore} from '../TaskItem'
 import '../app.css';
+
+
+
 
 
 export function LeaderboardPositions() {
