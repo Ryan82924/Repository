@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import '../app.css';
 
-export default function TaskItem({setTasks, tasks, setScore, score}){
+export default function TaskItem({setTasks, tasks, setScore, score, funFact,setFunFact}){
+  function thirdPartyAPI(id){
+    setFunFact(prevFunFact => { 
+      return {
+      ...prevFunFact,
+    [id]:funFact}})
+  }
 
     function checkTask(id){
     
@@ -20,6 +26,7 @@ export default function TaskItem({setTasks, tasks, setScore, score}){
                   prevScore = prevScore+1
                   console.log(prevScore)
                   localStorage.setItem('score', JSON.stringify(prevScore)) 
+                  thirdPartyAPI(id)
                   return prevScore
                 })
               }

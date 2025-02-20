@@ -12,6 +12,7 @@ export default function Todo(){
   const [taskText, setTaskText] = useState("");
   const [Checked, setChecked] = useState(false);
   const [score, setScore] = useState(0);
+  const [funFact, setFunFact] = useState("Placeholder for API, hardcoded for now.");
 
   
     
@@ -92,7 +93,7 @@ export default function Todo(){
             <p id = "third-party-api-placeholder"></p>
           </section>
          </section> */}
-         <TaskItem setTasks={setTasks} tasks= {tasks} setScore={setScore} score={score}/>
+         <TaskItem setTasks={setTasks} tasks= {tasks} setScore={setScore} score={score} funFact={funFact} setFunFact={setFunFact}/>
   
           
             
