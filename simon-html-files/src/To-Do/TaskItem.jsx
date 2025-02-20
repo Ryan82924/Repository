@@ -17,17 +17,22 @@ export default function TaskItem({setTasks, tasks, setScore, score}){
 
               if (!prevComplete){
                 setScore(prevScore => {
-                  console.log(prevScore+1) 
-                  return prevScore +1
+                  prevScore = prevScore+1
+                  console.log(prevScore)
+                  localStorage.setItem('score', JSON.stringify(prevScore)) 
+                  return prevScore
                 })
               }
               if (prevComplete){
                 setScore(prevScore=> {
-                  console.log(prevScore-1)
-                  return prevScore-1
+                  prevScore = prevScore-1
+                  console.log(prevScore)
+                  localStorage.setItem('score', JSON.stringify(prevScore))
+                  return prevScore
+                  
                 })
               }
-            }
+            } 
 
 
             
@@ -35,7 +40,9 @@ export default function TaskItem({setTasks, tasks, setScore, score}){
             
 
             return task
-          }); localStorage.setItem('task', JSON.stringify(updatedArray))  
+          }); localStorage.setItem('task', JSON.stringify(updatedArray)
+        ) 
+           
         return updatedArray;
       })
     }
