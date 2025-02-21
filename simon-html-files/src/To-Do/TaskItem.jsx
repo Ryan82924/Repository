@@ -6,7 +6,7 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
     setFunFact(prevFunFact => { 
       return {
       ...prevFunFact,
-    [id]:funFact}})
+    [id]:"this is a hardcoded fun fact"}})
   }
 
     function checkTask(id){
@@ -26,7 +26,7 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
                   prevScore = prevScore+1
                   console.log(prevScore)
                   localStorage.setItem('score', JSON.stringify(prevScore)) 
-                  thirdPartyAPI(id)
+                  
                   return prevScore
                 })
               }
@@ -81,14 +81,17 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
                   <h2 className = "task-create"> Your Tasks </h2>
                   <section className ="task-create">
                     {tasks.map((task) => (
-                      <div key={task.id}
-                      className = {task.completed ? 'completedTask' : 'task-item'} >
+                      <div><div key={task.id}
+                        className={task.completed ? 'completedTask' : 'task-item'}>
                         <span>{task.text}</span>
-                        
-                        <input type="checkbox" id={task.id} checked = {task.completed} onChange={() => {console.log("uwiqbiuwqw"); checkTask(task.id)}} className = "checkboxTask lessPaddingOnTheSides"/>
-                        
-                        <button onClick = {() =>removeTask(task.id)} className = "reduceTextSizeAndRoundedBorders coolColoredButtons lessPaddingOnTheSides"> Remove </button>
-                      </div>
+
+                        <input type="checkbox" id={task.id} checked={task.completed} onChange={() => { console.log(funFact[task.id]); checkTask(task.id); thirdPartyAPI(task.id); } } className="checkboxTask lessPaddingOnTheSides" />
+
+
+
+
+                        <button onClick={() => removeTask(task.id)} className="reduceTextSizeAndRoundedBorders coolColoredButtons lessPaddingOnTheSides"> Remove </button>
+                      </div><div>{task.completed ? <p className="less-spacing">{funFact[task.id]}</p> : null}</div></div>
         
                     ))}
                     </section> 
