@@ -9,7 +9,8 @@ For the CSS section I learned a lot about using styling to make HTML components 
 
 For the React Part 1 I learned about using nav links to set up routing as a single page application. I also learned about establishing each HTML component as a React component I also learned a lot about modularization as well.
 
-For React Part 2 I learned a lot about the syntax requirements (syntax errors/debugging took the most amount of time). (Unfinished)
+For React Part 2 I learned a lot about the syntax requirements (syntax errors/debugging took the most amount of time). I also learned a lot about the different components of a functional react app like use effect and use state.
+in addition I felt like I learned a lot about JS functions and react specific functions as well. I felt like so far this part of the project has helped me to learn the most out of all of the parts. 
 -->
 
 
@@ -71,42 +72,42 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x ] **HTML pages** - I did complete this part of the deliverable.
-- [ x] **Proper HTML element usage** - I did complete this part of the deliverable.
-- [ x] **Links** - I did complete this part of the deliverable.
+- [x ] **HTML pages** - I did complete this part of the deliverable. There are html pages for each component of the app. 
+- [ x] **Proper HTML element usage** - I did complete this part of the deliverable. Each of the pages have proper HTML styling.
+- [ x] **Links** - I did complete this part of the deliverable. Each of the pages use proper linking.
 - [x ] **Text** - I did complete this part of the deliverable.
-- [x ] **3rd party API placeholder** - I did complete this part of the deliverable.
-- [x ] **Images** - I did complete this part of the deliverable.
-- [ x] **Login placeholder** - I did complete this part of the deliverable.
-- [ x] **DB data placeholder** - I did complete this part of the deliverable.
-- [x ] **WebSocket placeholder** - I did complete this part of the deliverable.
+- [x ] **3rd party API placeholder** - I did complete this part of the deliverable. There is a 3rd party placeholder placed in the app (it's visible).
+- [x ] **Images** - I did complete this part of the deliverable. There are images in the app, there is an image of the app being built in the about page and there are also images of medals used in the leaderboard section. 
+- [ x] **Login placeholder** - I did complete this part of the deliverable. There is a login placeholder for when the login will be implemented. 
+- [ x] **DB data placeholder** - I did complete this part of the deliverable. There is a DB placeholder for when the database will be implemented.
+- [x ] **WebSocket placeholder** - I did complete this part of the deliverable. There is a websocket placeholder for when the database will be implemented.
 
 ## 🚀 CSS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x ] **Header, footer, and main content body** - I did complete this part of the deliverable.
-- [x ] **Navigation elements** - I did complete this part of the deliverable.
-- [x ] **Responsive to window resizing** - I did complete this part of the deliverable.
-- [x ] **Application elements** - I did complete this part of the deliverable.
-- [x ] **Application text content** - I did complete this part of the deliverable.
-- [x ] **Application images** - I did complete this part of the deliverable.
+- [x ] **Header, footer, and main content body** - I did complete this part of the deliverable. There are headers, footers, and main body contents for each of the html pages. 
+- [x ] **Navigation elements** - I did complete this part of the deliverable. The pages each include navigational elements (specifically in the header especially)
+- [x ] **Responsive to window resizing** - I did complete this part of the deliverable. The pages are responsive and adjust. 
+- [x ] **Application elements** - I did complete this part of the deliverable. The application elements look appropriate and professional and have a decent appearance. All parts of the app have some CSS styling applied. 
+- [x ] **Application text content** - I did complete this part of the deliverable. The text in the application have CSS applied to it as well. 
+- [x ] **Application images** - I did complete this part of the deliverable. The images in the application have CSS applied to resize and make them fit the app better.
 
 ## 🚀 React part 1: Routing deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ x ] **Bundled using Vite** - I did complete this part of the deliverable.
-- [ x ] **Components** - I did complete this part of the deliverable.
-- [ x ] **Router** - Routing between login and voting components.
-<!--##
+- [ x ] **Bundled using Vite** - I did complete this part of the deliverable. The app uses Vite to bundle it and enable the "npm run dev" command. (Which I used a ton while developing it).
+- [ x ] **Components** - I did complete this part of the deliverable. The components of the app which were previously in HTML format were moved to be in JS and react formatting. 
+- [ x ] **Router** - Routing between login and voting components. The routing was set up for the app to be able to work properly.
+
 ## 🚀 React part 2: Reactivity
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
-
+- [ x ] **All functionality implemented or mocked out** - I did complete this part of the deliverable. The app has proper functionality including the ability to add, check, remove, keep track of score, see fun facts appear (after checking tasks), (also updates score on leaderboard), login, and more minor features that were implemented as well such as the tasks appearing green on being checked. 
+- [ x ] **Hooks** - I did complete this part of the deliverable. The app uses useState and useEffect to implement the features listed above.
+<!--##
 ## 🚀 Service deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
