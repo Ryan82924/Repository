@@ -8,10 +8,13 @@ import '../app.css';
 
 
 export default function Todo(){ 
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(()=>{
+    const storedTasks= localStorage.getItem('task')
+    return storedTasks ? JSON.parse(storedTasks) : [];
+  });
   const [taskText, setTaskText] = useState("");
   const [Checked, setChecked] = useState(false);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState( 0 );
   const [funFact, setFunFact] = useState("Placeholder for API, hardcoded for now.");
 
   
