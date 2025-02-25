@@ -34,8 +34,8 @@ export function CurrentUser() {
     return(
       <div className="leaderboard-entry-current-user">
       <span> Unranked </span> 
-      <span id="rank-3-name "> {username} ( placeholder for the Current user's name. updated live via Websocket)</span>
-      <span id="rank-3-score "> {score} ( placeholder for the Current user's tasks completed. updated live via Websocket) </span> 
+      <span id="current-name "> {username} ( placeholder for the Current user's name. updated live via Websocket)</span>
+      <span id="current-score "> {score} ( placeholder for the Current user's tasks completed. updated live via Websocket) </span> 
     
     </div>
   );
