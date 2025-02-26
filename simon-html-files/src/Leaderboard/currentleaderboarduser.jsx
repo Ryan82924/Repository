@@ -13,6 +13,7 @@ export function CurrentUser() {
 
     let intervals = setInterval(() => {
     let itemscore = localStorage.getItem('score');
+    
     if (itemscore){
       let scores = JSON.parse(itemscore);
       (setScore(score => scores ))
@@ -26,6 +27,7 @@ export function CurrentUser() {
     
 
     }, [score, username])
+    
 
   
     

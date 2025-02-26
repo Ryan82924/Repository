@@ -105,14 +105,17 @@ background-color:azure; }
 }
 .leaderboard-entry{
 
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     text-align: center;
+    justify-content: center;
     align-items: center;
     font-size: 16; padding: 12px 20px;
     border:2px solid #333; 
     box-sizing: border-box;
     background-color: #a0c4ff;
     width:fit-content;
+    min-width: 600px;
     margin-top: 10px;
 }
 

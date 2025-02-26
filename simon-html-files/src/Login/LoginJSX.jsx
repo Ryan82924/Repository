@@ -19,6 +19,7 @@ export function databasePlaceholder(){
     if (databaseplaceholder[username] === password){ /*will 
       replaces with fetches from db */
       navigate("/todo");
+      localStorage.setItem('currentUsername', username)
     } 
     else {
       alert("Invalid password/user")
