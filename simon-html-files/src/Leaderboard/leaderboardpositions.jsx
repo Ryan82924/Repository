@@ -3,8 +3,8 @@ import React , { useState, useEffect } from 'react';
 import '../app.css';
 
 
-const GameEvent = {
-  End: 'gameEnd', 
+const LeaderBoardChange = {
+  End: 'LeaderboardEnd', 
 }
 class EventMessage {
   constructor(from, type, value) {
@@ -14,7 +14,7 @@ class EventMessage {
   }
 }
 
-class GameEventNotifier {
+class LeaderBoardChangeNotifier {
   handlers = []
   usernames = ["Doughnutdog ", "Doughnutcat ", "Doughnut "]
   getRandomUser(){
@@ -24,7 +24,7 @@ class GameEventNotifier {
     setInterval(() => {
       const score = Math.floor(Math.random() * 3000)
       const userName = this.getRandomUser()
-      this.broadcastEvent(userName, GameEvent.End, { name: userName, score });
+      this.broadcastEvent(userName, LeaderBoardChange.End, { name: userName, score });
     }, 1000)
   }
 
@@ -44,13 +44,13 @@ class GameEventNotifier {
   }
 }
 
-const GameNotifier = new GameEventNotifier()
+const LeaderboardNotifier = new LeaderBoardChangeNotifier()
 
-/*---*/
+
 
 export function LeaderboardPositions(){
   const [leaderboard, setLeaderboard] = useState(() => {
-    localStorage.setItem('leaderboard', leaderboard)
+    /*localStorage.setItem('leaderboard', leaderboard)*/
     let lb = JSON.parse(localStorage.getItem('leaderboard'))
     if (lb){
       return lb
@@ -63,7 +63,7 @@ export function LeaderboardPositions(){
     }
 
   })
-  /* function handleGameEvent(event) {
+  /* function handleGameChange(event) {
   setEvent((prevEvents) => {
     let newEvents = [event, ...prevEvents]; // Adds new event to the front
     if (newEvents.length > 10) {
@@ -72,74 +72,60 @@ export function LeaderboardPositions(){
     return newEvents;
   });
 }*/
-  function handleGame(event){
+  function handleLeaderboard(event){
     setLeaderboard((prevLeaderboard) => {
       
       let newLeaderboard = prevLeaderboard.slice(); 
-     let username = (user=>{user= event.value.name})
-     let score = (score=>{score= event.value.score})
-     newLeaderboard(username:username,score:score)
+    
+     newLeaderboard = newLeaderboard.filter(user => user.username)
      
-      newLeaderboard = newLeaderboard.sort((a,b) => b-a)
+    let user = newLeaderboard.find((user)=>user.username === event.value.name)
+    if (user){
+      user.score = event.value.score}
+    else 
+    {newLeaderboard.push({username: event.value.name, score: event.value.score})}
+        
+     
+      newLeaderboard = newLeaderboard.sort((a,b) => b.score-a.score)
       newLeaderboard = newLeaderboard.slice(0, 3);
-      
-      return newLeaderboard;
-    });
+      console.log(newLeaderboard, "lb after slicing")
+      localStorage.setItem('leaderboard', JSON.stringify(newLeaderboard))
+      return newLeaderboard
+    })
 
   }
 
   useEffect(() => {
-    GameNotifier.addHandler(handleGameEvent)
+    LeaderboardNotifier.addHandler(handleLeaderboard)
     return () => {
-        GameNotifier.removeHandler(handleGameEvent)
+        LeaderboardNotifier.removeHandler(handleLeaderboard)
     }
   }, [])
-  const bouton = document.getElementById('myButton');
-  const image = document.getElementById('myImg');
-  let index = 0; 
-  // Instead of using a called function 
-  // I used the new Javascript syntax
-  bouton.addEventListener('click', () => {
-      // you probably will have to adapt the image path 
-      // I used the one that you use on the video
-      image.src='img/' + images[index];
-      index++;
-      // If you want to restart, set the index to 0
-      // once the array will be passed
-      if (index >= images.length) {
-          index = 0;}})
+  
   return(
+    <div>
+        <h2 className = "centered">Leaderboard</h2> 
+        <section>
+    {leaderboard.map((entries,index)=>{
+      let images = [
+        "goldmedal.png",
+        "silvermedal.png",
+        "bronzemedal.png"
+      ][index]
+    return (<div key = {index} className="leaderboard-entry somePaddingOnTheSides" >
+      <img width="20px" src={images} alt="screenshot of medal"/>   
+      <span> {index+1} (rank)</span>
+      <span> {"Username :" +entries.username} </span>
+      <span> {"Score :" +entries.score} </span>
+      </div>
+      
+      ) 
     
-  <div>
-  <div>
-    leaderboard.map()
-  <div className="leaderboard-entry somePaddingOnTheSides" >
-  <img width="20px" id="img-id-placeholder" src={images} alt="screenshot of medal"/> 
-  <span> 1 (rank)</span>
-  <span id="rank-1-name"> {leaderboard[0].username} (placeholder for the first-ranked user's name. updated live via Websocket)</span>
-  <span id="rank-1-score"> {leaderboard[0].score} (placeholder for the first-ranked user's tasks completed. updated live via Websocket) </span>
-</div>
-<div className="leaderboard-entry somePaddingOnTheSides">
-  <img width="20px" id="img-id-placeholder" src="silvermedal.png" alt="screenshot of medal"/>
-  <span> 2 (rank)</span>
-  <span id="rank-2-name"> {leaderboard[1].username} (placeholder for the second-ranked user's name. updated live via Websocket) </span>
-  <span id="rank-2-score"> {leaderboard[1].score} (placeholder for the second-ranked user's tasks completed. updated live via Websocket) </span>
-</div>
-<div className="leaderboard-entry somePaddingOnTheSides">
-  <img width="20px" id="img-id-placeholder" src="bronzemedal.png" alt="screenshot of medal"/>
-  <span> 3 (rank)</span> 
-  <span id="rank-3-name"> {leaderboard[2].username} (placeholder for the third-ranked user's name. updated live via Websocket)</span>
-  <span id="rank-3-score"> {leaderboard[2].score} (placeholder for the third-ranked user's tasks completed. updated live via Websocket) </span> 
-
-</div>
-</div>
-</div>
-)
-
-
+    }
+    )
+    }
+    </section>
+    </div>)
 
 
 }
-          
-          
-              
