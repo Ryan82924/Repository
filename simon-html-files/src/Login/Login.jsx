@@ -3,6 +3,7 @@ import Header from '../components/header'
 import Footer from '../components/footer';
 import { useNavigate } from 'react-router-dom';
 import {doLogin, createUser, databasePlaceholder} from './LoginJSX';
+
 import '../app.css';
 export default function Login() {
   const [username, setUsername] = React.useState('')
@@ -11,6 +12,17 @@ export default function Login() {
   const {databaseplaceholder, setDatabaseplaceholder} = databasePlaceholder();
 
   
+  async sendUserPassBack(endpoint){
+    const response = fetch(endpoint){
+
+    method: 'post',
+      body: JSON.stringify({ username: username, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+    
+      }}
+  }
+  sendUserPassBack('/api/create')
 
   function handleSubmit(event){
     
@@ -26,8 +38,33 @@ export default function Login() {
 
   }
 /* java script  functions */
-  
 
+
+  
+/*async function doLogin() {
+  doLoginOrCreate(`/api/auth/login`);
+}
+
+async function createUser() {
+  doLoginOrCreate(`/api/auth/create`);
+}
+
+
+async doLoginOrCreate(endpoint, username, password){
+  const response = await fetch(endpoint, {
+  method: 'post',
+      body: JSON.stringify({ username: username, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+  }})
+  if (response?.status === 200) {
+    localStorage.setItem('username', username);
+    doLogin(username); 
+  } else {
+    const body = await response.json();
+    setDisplayError(`⚠ Error: ${body.msg}`);
+  }
+} */
 
 
   /* end java script functions */

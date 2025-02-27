@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../app.css';
+import { AuthState } from './authState';
+
+
 
 
 
@@ -20,9 +23,11 @@ export function databasePlaceholder(){
       replaces with fetches from db */
       navigate("/todo");
       localStorage.setItem('currentUsername', username)
+      AuthState.Authenticated.name
     } 
     else {
       alert("Invalid password/user")
+      AuthState.Unauthenticated.name
     }
 
       
@@ -30,6 +35,10 @@ export function databasePlaceholder(){
   }
 
   export function createUser(event,username,password,navigate, setDatabaseplaceholder){
+
+
+
+
 
 
   event.preventDefault();
@@ -41,16 +50,25 @@ export function databasePlaceholder(){
     };
     updateDatabase(username, password)
     alert('Account created! Press login to login')
+    AuthState.Authenticated.name
 
 
     console.log('logging in')
     if (setDatabaseplaceholder[username] === password){ /*will 
       replaces with fetches from db */
       navigate("/todo");
+      AuthState.Authenticated.name
 
     } 
-    
 
+
+
+    
+    fetch('http://localhost:3000/api/test')
+    .then(res => res.text())
+    .then(text => console.log(text))
 
 }
+
+
 
