@@ -25,10 +25,7 @@ export function databasePlaceholder(){
       localStorage.setItem('currentUsername', username)
       AuthState.Authenticated.name
     } 
-    else {
-      alert("Invalid password/user")
-      AuthState.Unauthenticated.name
-    }
+    
 
       
     

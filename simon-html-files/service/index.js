@@ -55,6 +55,26 @@ apiRouter.post('/create', async (req, res) => {
   
 })
 
+apiRouter.post('/login', async (req, res) => {
+  if (!req.body.username || !req.body.password){
+    return res.status(400).json({msg:"please use both user and password"})
+
+  }
+  else if (!users[req.body.username]){
+    return res.status(404).json({msg:"user not found"})
+
+  }
+
+  else if (users[req.body.username] !== req.body.password){
+    return res.status(401).json({msg:"incorrect password"})
+  }
+  
+    
+  else if (users[req.body.username] === req.body.password){
+    return res.status(200).json({msg:"success"})}
+  
+})
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

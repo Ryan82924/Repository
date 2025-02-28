@@ -31,6 +31,7 @@ export default function Login() {
     const data = await response.json(); 
     if (response?.status === 200){
       createUser(event, username, password, navigate, setDatabaseplaceholder)
+      localStorage.setItem('username',username)
         
 
     }else{
@@ -39,7 +40,39 @@ export default function Login() {
     }
   }
 
-  
+
+  async function loginUserFrontBack(event, endpoint){
+    event.preventDefault();
+    const response = await fetch(`http://localhost:3000${endpoint}`, {
+
+    method: 'POST',
+      body: JSON.stringify({ username: username, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+    
+      }
+      
+
+
+      
+
+    })
+    const data = await response.json(); 
+    if (response?.status === 200){
+      doLogin(event, username, password, navigate, setDatabaseplaceholder)
+      localStorage.setItem('username',username)
+      navigate('/todo')
+      console.log("ahhhhhh")
+        
+
+    }else{
+      console.log(data)
+      alert(data)
+
+    }
+  }
+
+
   
 /*if (response?.status === 200) {
         localStorage.setItem('userName', userName);
@@ -54,7 +87,7 @@ export default function Login() {
       /*event.submitter.name*/
       event.preventDefault();
     if (action === "login") {
-      doLogin(event, username, password, navigate, databaseplaceholder)}
+      loginUserFrontBack(event, '/api/login')}
       
     else if (action==="create"){
       createUserFrontBack(event, '/api/create')
