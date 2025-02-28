@@ -9,7 +9,7 @@ const cors = require('cors');
 /*const authCookieName = 'token';*/
 
 // The scores and users are saved in memory and disappear whenever the service is restarted.
-let users = [];
+let users = {};
 let scores = [];
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
@@ -40,7 +40,19 @@ apiRouter.get('/test', (_req, res) => {
 });
 
 apiRouter.post('/create', async (req, res) => {
-  req.body{username.username, password.password}
+  if (req.body.username && req.body.password){
+    if (!users[req.body.username]){
+      users[req.body.username]= req.body.password
+      return res.status(200).json({msg:"success"})}
+      else{
+        return res.status(409).json({ msg: 'User already exists' });
+  } 
+
+  
+  }
+
+
+  
 })
 
 

@@ -12,18 +12,42 @@ export default function Login() {
   const {databaseplaceholder, setDatabaseplaceholder} = databasePlaceholder();
 
   
-  async sendUserPassBack(endpoint){
-    const response = fetch(endpoint){
+  async function createUserFrontBack(event, endpoint){
+    event.preventDefault();
+    const response = await fetch(`http://localhost:3000${endpoint}`, {
 
-    method: 'post',
+    method: 'POST',
       body: JSON.stringify({ username: username, password: password }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
     
-      }}
-  }
-  sendUserPassBack('/api/create')
+      }
+      
 
+
+      
+
+    })
+    const data = await response.json(); 
+    if (response?.status === 200){
+      createUser(event, username, password, navigate, setDatabaseplaceholder)
+        
+
+    }else{
+      console.log(data)
+
+    }
+  }
+
+  
+  
+/*if (response?.status === 200) {
+        localStorage.setItem('userName', userName);
+        props.onLogin(userName);
+      } else {
+        const body = await response.json();
+        setDisplayError(`⚠ Error: ${body.msg}`);
+      }*/
   function handleSubmit(event){
     
       let action = event.nativeEvent.submitter.value
@@ -33,7 +57,7 @@ export default function Login() {
       doLogin(event, username, password, navigate, databaseplaceholder)}
       
     else if (action==="create"){
-      createUser(event, username, password, navigate, setDatabaseplaceholder)
+      createUserFrontBack(event, '/api/create')
     }
 
   }
@@ -98,4 +122,5 @@ async doLoginOrCreate(endpoint, username, password){
     <Footer/>
     </div>
       )
-  }
+  
+}
