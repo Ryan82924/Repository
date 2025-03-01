@@ -41,21 +41,42 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
               }
             } 
 
-
             
 
             
-
+            
             return task
-          }); localStorage.setItem('task', JSON.stringify(updatedArray)
-        ) 
-           
-        return updatedArray;
+          }); 
+          
+          return updatedArray
       })
     }
       
         
-    
+    async function passbackscore(taskId, endpoint){
+      
+      const response = await fetch(`http://localhost:3000${endpoint}`, {
+  
+      method: 'POST',
+        body: JSON.stringify({ taskId, score: localStorage.getItem('score'),}),
+        
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+      
+        }
+        
+      })
+      const data = await response.json(); 
+      if (response?.status === 200){
+        checkTask(taskId);
+        
+        
+      }else{
+        console.log(data)
+  
+      }
+    }
+
         
     
     
@@ -74,10 +95,13 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
       })
     }
 
+
+    
   
 
     async function passbackremoveTask(taskId, endpoint){
       console.log("Inside passbackremovetask", taskId);
+      setTasks((prevTasks)=>prevTasks.filter(task => task.id !== taskId))
      
     
       const response = await fetch(`http://localhost:3000${endpoint}/${taskId}`, {
@@ -111,12 +135,13 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
         <section>
                   <h2 className = "task-create"> Your Tasks </h2>
                   <section className ="task-create">
-                    {tasks.map((task) => (
+                  {Array.isArray(tasks) ? tasks.map((task) => (
+
                       <div><div key={task.id}
                         className={task.completed ? 'completedTask' : 'task-item'}>
                         <span>{task.text}</span>
 
-                        <input type="checkbox" id={task.id} checked={task.completed} onChange={() => { console.log(funFact[task.id]); checkTask(task.id); thirdPartyAPI(task.id); } } className="checkboxTask lessPaddingOnTheSides" />
+                        <input type="checkbox" id={task.id} checked={task.completed} onChange={() => { console.log(funFact[task.id]); passbackscore(task.id, '/api/score'); thirdPartyAPI(task.id); } } className="checkboxTask lessPaddingOnTheSides" />
 
 
 
@@ -124,7 +149,8 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
                         <button onClick={() => passbackremoveTask(task.id, '/api/remove/tasks')} className="reduceTextSizeAndRoundedBorders coolColoredButtons lessPaddingOnTheSides"> Remove </button>
                       </div><div>{task.completed ? <p className="less-spacing">{funFact[task.id]}</p> : null}</div></div>
         
-                    ))}
+                    )) :<p> Add some tasks! </p>
+                  }
                     </section> 
                   </section>
     )

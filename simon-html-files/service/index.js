@@ -10,13 +10,13 @@ const cors = require('cors');
 
 // The scores and users are saved in memory and disappear whenever the service is restarted.
 let users = {};
-let scores = [];
+let score = 0;
 let tasks = []
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 app.use(cors({
-  origin: 'http://localhost:5174', // Allow requests only from this frontend
+  origin: 'http://localhost:5173', // Allow requests only from this frontend
   methods: ['GET', 'POST', 'DELETE',],
 }));
 // JSON body parsing using built-in middleware
@@ -124,24 +124,16 @@ apiRouter.delete('/remove/tasks/:taskId', async (req, res) => {
 
 
 apiRouter.post('/score', async (req, res) => {
-  if (!req.body.username || !req.body.password){
-    return res.status(400).json({msg:"please use both user and password"})
-
-  }
-  else if (!users[req.body.username]){
-    return res.status(404).json({msg:"user not found"})
-
-  }
-
-  else if (users[req.body.username] !== req.body.password){
-    return res.status(401).json({msg:"incorrect password"})
-  }
+ 
   
-    
-  else if (users[req.body.username] === req.body.password){
-    return res.status(200).json({msg:"success"})}
-  
-})
+  if (req.body.score) {
+    score = req.body.score;
+    return res.status(200).json({ msg: "Updated score", score });
+  } else {
+    return res.status(400).json({ msg: "Invalid score update" });
+  }
+});
+
 
 
 app.listen(port, () => {
