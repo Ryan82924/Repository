@@ -74,6 +74,37 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
       })
     }
 
+  
+
+    async function passbackremoveTask(taskId, endpoint){
+      console.log("Inside passbackremovetask", taskId);
+     
+    
+      const response = await fetch(`http://localhost:3000${endpoint}/${taskId}`, {
+  
+      method: 'DELETE',
+        
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+      
+        }
+        
+      })
+      const data = await response.json(); 
+      if (response?.status === 200){
+        setTasks(data.tasks);
+        console.log("the taskId is", taskId)
+        console.log(data)
+        
+          
+  
+      }else{
+        console.log(data)
+  
+      }
+    }
+
+
 
 
     return (
@@ -90,7 +121,7 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
 
 
 
-                        <button onClick={() => removeTask(task.id)} className="reduceTextSizeAndRoundedBorders coolColoredButtons lessPaddingOnTheSides"> Remove </button>
+                        <button onClick={() => passbackremoveTask(task.id, '/api/remove/tasks')} className="reduceTextSizeAndRoundedBorders coolColoredButtons lessPaddingOnTheSides"> Remove </button>
                       </div><div>{task.completed ? <p className="less-spacing">{funFact[task.id]}</p> : null}</div></div>
         
                     ))}
