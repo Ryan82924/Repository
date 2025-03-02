@@ -123,14 +123,14 @@ apiRouter.delete('/remove/tasks/:taskId', async (req, res) => {
 
 
 
-apiRouter.post('/score', async (req, res) => {
+apiRouter.post('/score/:taskId', async (req, res) => {
  
   
-  if (req.body.score) {
+  if (req.body.score !== undefined) {
     score = req.body.score;
     return res.status(200).json({ msg: "Updated score", score });
   } else {
-    return res.status(400).json({ msg: "Invalid score update" });
+    return res.status(400).json({ msg: "Invalid score update", receivedTaskId: req.body.taskId });
   }
 });
 

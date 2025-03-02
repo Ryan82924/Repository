@@ -54,11 +54,11 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
       
         
     async function passbackscore(taskId, endpoint){
-      
-      const response = await fetch(`http://localhost:3000${endpoint}`, {
+      console.log("Inside [passbackscore]", taskId);
+      const response = await fetch(`http://localhost:3000${endpoint}/${taskId}`, {
   
       method: 'POST',
-        body: JSON.stringify({ taskId, score: localStorage.getItem('score'),}),
+        body: JSON.stringify({ taskId, score: Number(localStorage.getItem('score')),}),
         
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -69,7 +69,7 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
       const data = await response.json(); 
       if (response?.status === 200){
         checkTask(taskId);
-        
+        console.log("the score is", data.score)
         
       }else{
         console.log(data)
@@ -84,6 +84,7 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
         
         
         setTasks(prevTasks => {
+        
         let newArray = prevTasks.slice()
         let index = newArray.findIndex(task => task.id === taskId)
         if (index !==-1){
@@ -92,7 +93,7 @@ export default function TaskItem({setTasks, tasks, setScore, score, funFact,setF
         }
         localStorage.setItem('task', JSON.stringify(newArray))
         return newArray
-      })
+    })
     }
 
 

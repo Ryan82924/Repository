@@ -48,7 +48,7 @@ async function passbackTask(endpoint){
     })
     const data = await response.json(); 
     if (response?.status === 200){
-      addTask(taskText)
+      setTasks(data.tasks);
       console.log(data)
       
         
