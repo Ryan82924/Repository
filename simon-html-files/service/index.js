@@ -16,7 +16,7 @@ let tasks = []
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow requests only from this frontend
+  origin: 'http://localhost:5173',
   methods: ['GET', 'POST', 'DELETE',],
 }));
 // JSON body parsing using built-in middleware
@@ -109,8 +109,7 @@ apiRouter.delete('/remove/tasks/:taskId', async (req, res) => {
     
     console.log(req.params.taskId)
     console.log(tasks.map(task=>task.id))
-    //console.log("Deleting Task ID:", req.params.taskId, typeof req.params.taskId);
-    //console.log("Tasks in Array:", tasks.map(task => task.id), typeof tasks[0]?.id);
+    
     
     
 
@@ -127,10 +126,12 @@ apiRouter.post('/score/:taskId', async (req, res) => {
  
   
   if (req.body.score !== undefined) {
+
     score = req.body.score;
+    console.log(score)
     return res.status(200).json({ msg: "Updated score", score });
   } else {
-    return res.status(400).json({ msg: "Invalid score update", receivedTaskId: req.body.taskId });
+    return res.status(400).json({ msg: "Invalid score update", receivedTaskId: req.body.id });
   }
 });
 
