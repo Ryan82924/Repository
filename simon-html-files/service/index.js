@@ -6,12 +6,30 @@ const app = express();
 const cors = require('cors');
 
 
-/*const authCookieName = 'token';*/
+
 
 // The scores and users are saved in memory and disappear whenever the service is restarted.
 let users = {};
 let score = 0;
 let tasks = []
+
+// auth stuff
+
+const authCookieName = 'token';
+function setAuthCookie(res){
+  let authToken = uuid.v4()
+  res.cookie(authCookieName, authToken, {
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+    maxAge: 3600000 
+  })
+  return authToken
+}
+
+//end auth func
+
+
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -48,8 +66,6 @@ apiRouter.post('/create', async (req, res) => {
       else{
         return res.status(409).json({ msg: 'User already exists' });
   } 
-
-  
   }
 
 
@@ -72,9 +88,36 @@ apiRouter.post('/login', async (req, res) => {
   
     
   else if (users[req.body.username] === req.body.password){
+    let cookie = setAuthCookie(res);
+    users[req.body.username]
+
+
     return res.status(200).json({msg:"success"})}
   
 })
+
+apiRouter.get('/logout', async (req, res) => {
+  if (users === undefined || Object.keys(users).length === 0){
+    return res.status(400).json({msg:"please use both user and password", users})
+
+  }
+  else if (!users[username]){
+    return res.status(404).json({msg:"user not found"})
+
+  }
+
+  else if (users[username] !== password){
+    return res.status(401).json({msg:"incorrect password"})
+  }
+  
+    
+  else if (users[username] === password){
+    
+    return res.status(200).json({msg:"success"})}
+  
+})
+
+
 
 
 
