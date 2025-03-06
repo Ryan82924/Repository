@@ -21,7 +21,8 @@ export default function Login() {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
     
-      }
+      },
+      credentials: "include"
       
 
 
@@ -42,6 +43,7 @@ export default function Login() {
 
 
   async function loginUserFrontBack(event, endpoint){
+    console.log("frontend console log received")
     event.preventDefault();
     const response = await fetch(`http://localhost:3000${endpoint}`, {
 
@@ -50,7 +52,9 @@ export default function Login() {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
     
-      }
+      },
+      credentials: "include"
+
       
 
 
@@ -63,6 +67,7 @@ export default function Login() {
       localStorage.setItem('username',username)
       navigate('/todo')
       console.log("ahhhhhh")
+      
         
 
     }else{

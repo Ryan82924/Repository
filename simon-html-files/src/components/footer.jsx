@@ -1,17 +1,20 @@
 import React from 'react';
 import '../app.css';
 import {NavLink} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export default function Footer() {
+  const navigate = useNavigate();
 
   async function logoutUserFrontBack(endpoint){
       
       const response = await fetch(`http://localhost:3000${endpoint}`, {
   
-      method: 'GET',
+      method: 'DELETE',
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
       
-        }
+        },
+        credentials: "include"
       })
       const data = await response.json(); 
       if (response?.status === 200){

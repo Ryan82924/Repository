@@ -22,7 +22,8 @@ function setAuthCookie(res){
     httpOnly: true,
     secure: false,
     sameSite: 'strict',
-    maxAge: 3600000 
+    maxAge: 3600000,
+    
   })
   return authToken
 }
@@ -36,6 +37,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 app.use(cors({
   origin: 'http://localhost:5173',
   methods: ['GET', 'POST', 'DELETE',],
+  credentials: true,
 }));
 // JSON body parsing using built-in middleware
 app.use(express.json());
@@ -61,7 +63,7 @@ apiRouter.get('/test', (_req, res) => {
 apiRouter.post('/create', async (req, res) => {
   if (req.body.username && req.body.password){
     if (!users[req.body.username]){
-      users[req.body.username]= req.body.password
+      users[req.body.username]= {password: req.body.password}
       return res.status(200).json({msg:"success"})}
       else{
         return res.status(409).json({ msg: 'User already exists' });
@@ -73,49 +75,51 @@ apiRouter.post('/create', async (req, res) => {
 })
 
 apiRouter.post('/login', async (req, res) => {
+  console.log("Login request received:", req.body);
   if (!req.body.username || !req.body.password){
-    return res.status(400).json({msg:"please use both user and password"})
-
-  }
-  else if (!users[req.body.username]){
-    return res.status(404).json({msg:"user not found"})
-
-  }
-
-  else if (users[req.body.username] !== req.body.password){
-    return res.status(401).json({msg:"incorrect password"})
-  }
-  
-    
-  else if (users[req.body.username] === req.body.password){
-    let cookie = setAuthCookie(res);
-    users[req.body.username]
-
-
-    return res.status(200).json({msg:"success"})}
-  
-})
-
-apiRouter.get('/logout', async (req, res) => {
-  if (users === undefined || Object.keys(users).length === 0){
     return res.status(400).json({msg:"please use both user and password", users})
 
   }
-  else if (!users[username]){
-    return res.status(404).json({msg:"user not found"})
+  else if (!users[req.body.username]){
+    return res.status(404).json({msg:"user not found", users})
 
   }
 
-  else if (users[username] !== password){
-    return res.status(401).json({msg:"incorrect password"})
+  else if (users[req.body.username].password !== req.body.password){
+    return res.status(401).json({msg:"incorrect password", users})
   }
   
     
-  else if (users[username] === password){
-    
-    return res.status(200).json({msg:"success"})}
-  
+  else if (users[req.body.username].password === req.body.password ){
+    let cookie = setAuthCookie(res);
+     console.log(cookie)
+
+
+
+    return res.status(200).json({msg:"success", cookie})}
 })
+
+apiRouter.delete('/logout', async (req, res) => {
+  console.log(req.cookies);
+  
+    let user = req.cookies[authCookieName]
+
+    for (let username in users){
+      if (users[username].token === user){
+        let realUser = users[username]    
+        delete realUser.token      
+        return res.status(200).json({msg:"success", realUser})
+        }
+        
+        
+      }
+      return res.status(400).json({msg:"failed", user})
+      
+
+    }
+
+  
+)
 
 
 
