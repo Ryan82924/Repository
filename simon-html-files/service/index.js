@@ -92,6 +92,11 @@ apiRouter.post('/login', async (req, res) => {
     
   else if (users[req.body.username].password === req.body.password ){
     let cookie = setAuthCookie(res);
+
+     users[req.body.username] ={
+      ...users[req.body.username],
+      token:cookie
+     }
      console.log(cookie)
 
 
@@ -106,8 +111,10 @@ apiRouter.delete('/logout', async (req, res) => {
 
     for (let username in users){
       if (users[username].token === user){
-        let realUser = users[username]    
-        delete realUser.token      
+        let realUser = user
+        delete users[username].token
+        res.clearCookie(authCookieName)
+        console.log(req.cookies[authCookieName])
         return res.status(200).json({msg:"success", realUser})
         }
         
