@@ -2,11 +2,34 @@ import React, { useEffect, useState } from 'react';
 import '../app.css';
 
 export default function TaskItem({setTasks, tasks, setScore, score, funFact,setFunFact}){
-  function thirdPartyAPI(id){
+  
+  async function callThirdParty(){
+    const response = await fetch('https://uselessfacts.jsph.pl/api/v2/facts/random?language=en',{
+    method: 'GET',
+      headers: {
+        "Accept": "application/json"
+
+    
+
+
+  },
+
+})
+const data = await response.json()
+if (response?.status === 200){
+  return data.text
+} 
+else{
+  console.log(data)
+}
+
+}
+  async function thirdPartyAPI(id){
+    let resultFact = await callThirdParty()
     setFunFact(prevFunFact => { 
       return {
       ...prevFunFact,
-    [id]:"this is a hardcoded fun fact"}})
+    [id]: resultFact}})
   }
 
     function checkTask(id){
