@@ -190,6 +190,18 @@ apiRouter.post('/score/:taskId', async (req, res) => {
 });
 
 
+apiRouter.get('/auth', async (req, res) => {
+  if (req.cookies[authCookieName]){
+    return res.status(200).json({ msg: "Authorized", token : req.cookies[authCookieName]  });
+
+  }
+  else{
+    return res.status(401).json({ msg: "Cookie not found", token : req.cookies[authCookieName] });
+
+  }
+})
+
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
