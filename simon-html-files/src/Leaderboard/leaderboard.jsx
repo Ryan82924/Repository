@@ -10,7 +10,6 @@ export default function Leaderboard() {
 
     return (
     <div className='fullpage'>
-    <Header />
     <main>
       
         {/*<h2 className = "centered">Leaderboard</h2> 

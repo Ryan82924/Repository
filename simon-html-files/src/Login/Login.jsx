@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import {doLogin, createUser, databasePlaceholder} from './LoginJSX';
 
 import '../app.css';
-export default function Login() {
+export default function Login(props) {
   const [username, setUsername] = React.useState('')
   const [password, setPassword] = React.useState('')
   const navigate = useNavigate();
   const {databaseplaceholder, setDatabaseplaceholder} = databasePlaceholder();
+  
 
   
   async function createUserFrontBack(event, endpoint){
@@ -31,6 +32,7 @@ export default function Login() {
     })
     const data = await response.json(); 
     if (response?.status === 200){
+      console.log("testing")
       createUser(event, username, password, navigate, setDatabaseplaceholder)
       localStorage.setItem('username',username)
         
@@ -40,10 +42,46 @@ export default function Login() {
 
     }
   }
+  async function authCheck(){
+    console.log("frontend console log received")
+    const response = await fetch(`http://localhost:3000/api/auth`, {
+
+    method: 'GET',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+    
+      },
+      credentials: "include"
+
+    })
+    console.log("request recieved")
+    if (response.status === 200){
+      props.setAuth(true)
+      return true
+      
+      
+        
+
+    }else{
+      props.setAuth(null)
+      return null
+
+    }
+  }
+
+  useEffect(()=>{
+      authCheck()
+    },[])
+    /*useEffect(()=>{
+      
+      if (props.auth) {
+        navigate('/todo');
+  }},[props.auth])*/
 
 
   async function loginUserFrontBack(event, endpoint){
-    console.log("frontend console log received")
+    console.log("frontend console")
+    console.log({endpoint})
     event.preventDefault();
     const response = await fetch(`http://localhost:3000${endpoint}`, {
 
@@ -56,16 +94,18 @@ export default function Login() {
       credentials: "include"
 
       
-
-
-      
-
     })
     const data = await response.json(); 
+    console.log("authorization info:", data);
     if (response?.status === 200){
       doLogin(event, username, password, navigate, setDatabaseplaceholder)
-      localStorage.setItem('username',username)
-      navigate('/todo')
+      await authCheck()
+        //if (newAuth){
+          //navigate('/todo')
+        //}
+        //navigate('/todo')
+      
+      
       console.log("ahhhhhh")
       
         
@@ -76,6 +116,10 @@ export default function Login() {
 
     }
   }
+
+  
+
+  
 
 
   
@@ -137,7 +181,7 @@ async doLoginOrCreate(endpoint, username, password){
 
       return (
       <div className='fullpage'>
-      <Header />
+      
       <main className="centered">
       <h1 className="extrabottommargins extratopmargins size-increase" >Welcome to To-Do Facts</h1>
       

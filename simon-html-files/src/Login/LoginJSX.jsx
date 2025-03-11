@@ -23,7 +23,6 @@ export function databasePlaceholder(){
       replaces with fetches from db */
       navigate("/todo");
       localStorage.setItem('currentUsername', username)
-      AuthState.Authenticated.name
     } 
     
 
@@ -47,14 +46,12 @@ export function databasePlaceholder(){
     };
     updateDatabase(username, password)
     alert('Account created! Press login to login')
-    AuthState.Authenticated.name
 
 
     console.log('logging in')
     if (setDatabaseplaceholder[username] === password){ /*will 
       replaces with fetches from db */
       navigate("/todo");
-      AuthState.Authenticated.name
 
     } 
 

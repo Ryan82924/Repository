@@ -20,22 +20,30 @@ function setAuthCookie(res){
   let authToken = uuid.v4()
   res.cookie(authCookieName, authToken, {
     httpOnly: true,
-    secure: false,
-    sameSite: 'strict',
+    secure: true,
+    sameSite: 'None',
     maxAge: 3600000,
     
   })
   return authToken
 }
 
+function findUser(field, value) {
+  if (!value) return null;
+
+  return Object.values(users).find((u) => u[field] === value);
+}
+
+
+
 //end auth func
 
-
+allowedOrigins = ['http://localhost:5173', 'https://startup.todo-facts.click', 'http://localhost:5174']
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'DELETE',],
   credentials: true,
 }));
@@ -61,6 +69,7 @@ apiRouter.get('/test', (_req, res) => {
 });
 
 apiRouter.post('/create', async (req, res) => {
+  console.log("create request received")
   if (req.body.username && req.body.password){
     if (!users[req.body.username]){
       users[req.body.username]= {password: req.body.password}
@@ -113,7 +122,13 @@ apiRouter.delete('/logout', async (req, res) => {
       if (users[username].token === user){
         let realUser = user
         delete users[username].token
-        res.clearCookie(authCookieName)
+        res.clearCookie(authCookieName,{
+          httpOnly: true,
+          secure: true,
+          sameSite: 'None'
+        })
+
+        
         console.log(req.cookies[authCookieName])
         return res.status(200).json({msg:"success", realUser})
         }
@@ -191,13 +206,14 @@ apiRouter.post('/score/:taskId', async (req, res) => {
 
 
 apiRouter.get('/auth', async (req, res) => {
-  if (req.cookies[authCookieName]){
-    return res.status(200).json({ msg: "Authorized", token : req.cookies[authCookieName]  });
-
+  console.log("cookies received:", req.cookies);
+  const user = findUser('token', req.cookies[authCookieName]);
+  console.log("user found")
+  if (user){
+    return res.status(200).send();
   }
   else{
-    return res.status(401).json({ msg: "Cookie not found", token : req.cookies[authCookieName] });
-
+    return res.status(401).send();
   }
 })
 
@@ -206,3 +222,4 @@ apiRouter.get('/auth', async (req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+//test

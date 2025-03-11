@@ -43,7 +43,7 @@ export default function Todo(){
 
     return (
       <div className='fullpage'>
-      <Header />
+      
       <main>
 
       
