@@ -25,7 +25,7 @@ export default function App() {
   async function authCheck() {
     console.log("running authCheck...");
     
-    const response = await fetch(`http://localhost:3000/api/auth`, {
+    const response = await fetch(`/api/auth`, {
       method: 'GET',
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
       credentials: "include"

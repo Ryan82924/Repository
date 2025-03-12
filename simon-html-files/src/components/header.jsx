@@ -9,7 +9,7 @@ export default function Header({auth, setAuth}) {
 
   async function authCheck(){
     console.log("frontend console log received")
-    const response = await fetch(`http://localhost:3000/api/auth`, {
+    const response = await fetch(`/api/auth`, {
 
     method: 'GET',
       headers: {

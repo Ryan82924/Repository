@@ -11,6 +11,8 @@ For the React Part 1 I learned about using nav links to set up routing as a sing
 
 For React Part 2 I learned a lot about the syntax requirements (syntax errors/debugging took the most amount of time). I also learned a lot about the different components of a functional react app like use effect and use state.
 in addition I felt like I learned a lot about JS functions and react specific functions as well. I felt like so far this part of the project has helped me to learn the most out of all of the parts. 
+
+For Simon Service I felt like I learned a lot about working between the front and the backend. Once again the syntax errors and the debugging took a lot of time for me. I also felt like I learned a lot more about async code and await. Which was something that I was a little confused about before but I felt like I got a better hold of during this process. I also felt like I learned a bit about debugging code and writing better JS/react since this section was almost entirely made of JS.  
 -->
 
 
@@ -107,18 +109,18 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [ x ] **All functionality implemented or mocked out** - I did complete this part of the deliverable. The app has proper functionality including the ability to add, check, remove, keep track of score, see fun facts appear (after checking tasks), (also updates score on leaderboard), login, and more minor features that were implemented as well such as the tasks appearing green on being checked. 
 - [ x ] **Hooks** - I did complete this part of the deliverable. The app uses useState and useEffect to implement the features listed above.
-<!--##
+
 ## 🚀 Service deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint - I did not complete this part of the deliverable.
-
+- [ x ] **Node.js/Express HTTP service** - I did complete this part of the deliverable.
+- [ x ] **Static middleware for frontend** - I did complete this part of the deliverable.
+- [ x ] **Calls to third party endpoints** - I did complete this part of the deliverable.
+- [ x ] **Backend service endpoints** - I did complete this part of the deliverable.
+- [ x ] **Frontend calls service endpoints** - I did complete this part of the deliverable.
+- [ x ] **Supports registration, login, logout, and restricted endpoint - I did complete this part of the deliverable.
+<!--##
 ## 🚀 DB/Login deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.

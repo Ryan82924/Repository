@@ -15,7 +15,7 @@ export default function Login(props) {
   
   async function createUserFrontBack(event, endpoint){
     event.preventDefault();
-    const response = await fetch(`http://localhost:3000${endpoint}`, {
+    const response = await fetch(`${endpoint}`, {
 
     method: 'POST',
       body: JSON.stringify({ username: username, password: password }),
@@ -44,7 +44,7 @@ export default function Login(props) {
   }
   async function authCheck(){
     console.log("frontend console log received")
-    const response = await fetch(`http://localhost:3000/api/auth`, {
+    const response = await fetch(`/api/auth`, {
 
     method: 'GET',
       headers: {
@@ -83,7 +83,7 @@ export default function Login(props) {
     console.log("frontend console")
     console.log({endpoint})
     event.preventDefault();
-    const response = await fetch(`http://localhost:3000${endpoint}`, {
+    const response = await fetch(`${endpoint}`, {
 
     method: 'POST',
       body: JSON.stringify({ username: username, password: password }),

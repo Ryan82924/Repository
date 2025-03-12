@@ -58,7 +58,7 @@ export function databasePlaceholder(){
 
 
     
-    fetch('http://localhost:3000/api/test')
+    fetch('/api/test')
     .then(res => res.text())
     .then(text => console.log(text))
 

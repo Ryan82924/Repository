@@ -49,7 +49,7 @@ else{
                   prevScore = prevScore+1
                   console.log(prevScore)
                   localStorage.setItem('score', JSON.stringify(prevScore)) 
-                  fetch(`http://localhost:3000/api/score/${id}`, {
+                  fetch(`/api/score/${id}`, {
   
                     method: 'POST',
                       body: JSON.stringify({ id, score: prevScore,}),
@@ -69,7 +69,7 @@ else{
                   console.log(prevScore)
                   localStorage.setItem('score', JSON.stringify(prevScore))
                   
-                  fetch(`http://localhost:3000/api/score/${id}`, {
+                  fetch(`/api/score/${id}`, {
   
                     method: 'POST',
                       body: JSON.stringify({ id, score: prevScore,}),
@@ -140,7 +140,7 @@ else{
       setTasks((prevTasks)=>prevTasks.filter(task => task.id !== taskId))
      
     
-      const response = await fetch(`http://localhost:3000${endpoint}/${taskId}`, {
+      const response = await fetch(`${endpoint}/${taskId}`, {
   
       method: 'DELETE',
         
