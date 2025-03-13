@@ -104,18 +104,12 @@ else{
       localStorage.getItem('score', JSON.stringify(score))
     }, [score])
         
-    async function passbackscore(taskId, endpoint){
-      console.log("Inside [passbackscore]", taskId);
-      checkTask(taskId);
-      
-      
-      
-    }
+   
 
         
     
     
-    function removeTask(taskId) {
+    /*function removeTask(taskId) {
         
         
         setTasks(prevTasks => {
@@ -129,7 +123,7 @@ else{
         localStorage.setItem('task', JSON.stringify(newArray))
         return newArray
     })
-    }
+    }*/
 
 
     

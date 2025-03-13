@@ -58,9 +58,9 @@ export default function App() {
       }*/
       
     
-    useEffect(() => {
+    /*useEffect(() => {
       authCheck();
-    }, []);
+    }, []);*/
   
   
   /*useEffect(() => {
