@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const DB = require('./database.js');
 
 
 
@@ -68,6 +69,7 @@ apiRouter.post('/create', async (req, res) => {
   if (req.body.username && req.body.password){
     if (!users[req.body.username]){
       users[req.body.username]= {password: req.body.password}
+      await DB.addUser(user)
       return res.status(200).json({msg:"success"})}
       else{
         return res.status(409).json({ msg: 'User already exists' });

@@ -4,8 +4,10 @@ const config = require('./dbConfig.json');
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 
 const client = new MongoClient(url);
-const db = client.db('rental');
-const collection = db.collection('house');
+const db = client.db('To-Do');
+const userCollection = db.collection('user');
+const scoreCollection = db.collection('score');
+
 
 async function main (){
     try {
@@ -16,20 +18,22 @@ async function main (){
         process.exit(1);
      }
 
-     const house = {
-        name: 'Beachfront views',
-        summary: 'From your bedroom to the beach, no shoes required',
-        property_type: 'Condo',
-        beds: 1,
-      };
-   
-      await collection.insertOne(house);
+   async function addUser(user) {
+      await userCollection.insertOne(user); // adds user object
+   }
 
-      const query = { property_type: 'Condo', beds: { $lt: 2 } };
-const options = {
- sort: { score: -1 },
- limit: 10,
-};
+   function getUser(username) {
+     return userCollection.findOne({ username: username });
+   }
+
+   function getUserByToken(token) {
+     return userCollection.findOne({ token: token });
+   }
+
+   
+      
+
+      
 const cursor = collection.find(query, options);
 const rentals = await cursor.toArray();
 rentals.forEach((i) => console.log(i));

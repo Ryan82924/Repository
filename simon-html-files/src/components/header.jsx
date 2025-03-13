@@ -7,7 +7,7 @@ export default function Header({auth, setAuth}) {
 
   
 
-  async function authCheck(){
+  /*async function authCheck(){
     console.log("frontend console log received")
     const response = await fetch(`/api/auth`, {
 
@@ -29,7 +29,7 @@ export default function Header({auth, setAuth}) {
       return null
 
     }
-  }
+  }/*
 
   /*useEffect(()=>{
     authCheck()
