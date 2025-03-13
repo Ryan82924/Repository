@@ -12,7 +12,7 @@ const { use } = require('react');
 // The scores and users are saved in memory and disappear whenever the service is restarted.
 let users = {};
 let score = 0;
-let tasks = []
+//let tasks = []
 
 // auth stuff
 
@@ -73,7 +73,8 @@ apiRouter.post('/create', async (req, res) => {
   if (req.body.username && req.body.password){
     if (!users[req.body.username]){
       //users[req.body.username]= {password: req.body.password}
-     let user = await createUser(req.body.username, req.body.password)
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+     let user = await createUser(req.body.username, hashedPassword)
       
       return res.status(200).json({msg:"success"})}
       else{
@@ -94,7 +95,7 @@ async function createUser(username, password) {
   
 })
 
-apiRouter.post('/login', async (req, res) => {
+/*apiRouter.post('/login', async (req, res) => {
   console.log("Login request received:", req.body);
   if (!req.body.username || !req.body.password){
     return res.status(400).json({msg:"please use both user and password", users})
@@ -122,9 +123,30 @@ apiRouter.post('/login', async (req, res) => {
 
 
     return res.status(200).json({msg:"success", cookie})}
-})
+})*/
 
-apiRouter.delete('/logout', async (req, res) => {
+apiRouter.post('/login', async (req, res) => {
+  let user = await findUser('username', req.body.username);
+  if (!user){
+    res.status(404).send({ msg: 'User Not Found' });
+  }
+  let cookie = setAuthCookie(res);
+  user = Object.assign(user, { token: cookie })
+  if (user) {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      await DB.updateUser(user);
+      return res.status(200).json({msg:"success", cookie})
+    }
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+  res.status(404).send({ msg: 'User Not Found' });
+});
+
+
+
+
+
+/*apiRouter.delete('/logout', async (req, res) => {
   console.log(req.cookies);
   
     let user = req.cookies[authCookieName]
@@ -138,27 +160,26 @@ apiRouter.delete('/logout', async (req, res) => {
           secure: true,
           sameSite: 'None'
         })
-
-        
         console.log(req.cookies[authCookieName])
         return res.status(200).json({msg:"success", realUser})
         }
-        
-        
       }
       return res.status(400).json({msg:"failed", user})
-      
-
     }
+)*/
+apiRouter.delete('/logout', async (req, res) => {
+  let user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    delete user.token;
+    DB.updateUser(user);
+  }
+  res.clearCookie(authCookieName);
+  res.status(204).end();
+});
 
-  
-)
 
 
-
-
-
-apiRouter.post('/tasks', async (req, res) => {
+/*apiRouter.post('/tasks', async (req, res) => {
   const { v4: uuidv4 } = require('uuid');
   let newTask = {
     id: uuidv4(),
@@ -166,6 +187,7 @@ apiRouter.post('/tasks', async (req, res) => {
     completed: false
 
   }
+  
   if (!req.body.task){
     return res.status(400).json({msg:"please input task"})
 
@@ -175,8 +197,38 @@ apiRouter.post('/tasks', async (req, res) => {
     return res.status(200).json({msg:"successfully added task", tasks})
 
   }
-})
+})*/
 
+
+apiRouter.post('/tasks', async (req, res) => {
+  let user = await findUser('username', req.body.username);
+  const { v4: uuidv4 } = require('uuid');
+  let newTask = {
+    id: uuidv4(),
+    text: req.body.task,
+    completed: false
+
+  }
+
+  if (!req.body.task){
+    return res.status(400).json({msg:"please input task"})
+  }
+  else{
+    if (!user.tasks){
+      user = Object.assign(user, { tasks: [] })
+      await DB.updateUser(user)
+      user.tasks.push(newTask)
+      await DB.updateUser(user)
+    }
+    if (user.tasks){
+      user.tasks.push(newTask)
+      await DB.updateUser(user)
+    }
+    
+    return res.status(200).json({msg:"successfully added task", user.tasks})
+
+  }
+})
 
 apiRouter.delete('/remove/tasks/:taskId', async (req, res) => {
   if (!req.params.taskId){
@@ -218,7 +270,7 @@ apiRouter.post('/score/:taskId', async (req, res) => {
 
 apiRouter.get('/auth', async (req, res) => {
   console.log("cookies received:", req.cookies);
-  const user = findUser('token', req.cookies[authCookieName]);
+  const user = await findUser('token', req.cookies[authCookieName]);
   console.log("user found")
   if (user){
     return res.status(200).send();

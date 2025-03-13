@@ -7,16 +7,19 @@ const client = new MongoClient(url);
 const db = client.db('To-Do');
 const userCollection = db.collection('user');
 const scoreCollection = db.collection('score');
+const taskCollection = db.collection('task');
 
 
 
-    try {
-        await db.command({ ping: 1 });
-        console.log(`DB connected to ${config.hostname}`);
-     } catch (ex) {
-        console.log(`Error with ${url} because ${ex.message}`);
-        process.exit(1);
-     }
+(async function testConnection() {
+  try {
+    await db.command({ ping: 1 });
+    console.log(`Connect to database`);
+  } catch (ex) {
+    console.log(`Unable to connect to database with ${url} because ${ex.message}`);
+    process.exit(1);
+  }
+})();
 
    async function addUser(user) {
       await userCollection.insertOne(user); // adds user object
@@ -30,12 +33,15 @@ const scoreCollection = db.collection('score');
      return userCollection.findOne({ token: token });
    }
 
+   async function updateUser(user) {
+     await userCollection.updateOne({ username: user.username }, { $set: user });
+   }
    
       
 
 
 
-await client.close() 
+
 
 
 
@@ -44,7 +50,5 @@ module.exports = {
    getUserByToken,
    addUser,
    updateUser,
-   addScore,
-   getHighScores,
  };
  
