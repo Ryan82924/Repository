@@ -49,11 +49,11 @@ export function databasePlaceholder(){
 
 
     console.log('logging in')
-    if (setDatabaseplaceholder[username] === password){ /*will 
-      replaces with fetches from db */
-      navigate("/todo");
+    //if (setDatabaseplaceholder[username] === password){ /*will 
+     // replaces with fetches from db */
+      //navigate("/todo");
 
-    } 
+    //} 
 
 
 

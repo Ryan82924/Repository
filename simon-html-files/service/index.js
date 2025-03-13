@@ -38,15 +38,11 @@ function findUser(field, value) {
 
 //end auth func
 
-// allowedOrigins = ['http://localhost:5173', 'https://startup.todo-facts.click', 'http://localhost:5174']
+
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
-// app.use(cors({
-//   origin: allowedOrigins,
-//   methods: ['GET', 'POST', 'DELETE',],
-//   credentials: true,
-// }));
+
 // JSON body parsing using built-in middleware
 app.use(express.json());
 
