@@ -4,6 +4,7 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
+const { use } = require('react');
 
 
 
@@ -28,10 +29,13 @@ function setAuthCookie(res){
   return authToken
 }
 
-function findUser(field, value) {
+async function findUser(field, value) {
   if (!value) return null;
 
-  return Object.values(users).find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
 
@@ -68,15 +72,25 @@ apiRouter.post('/create', async (req, res) => {
   console.log("create request received")
   if (req.body.username && req.body.password){
     if (!users[req.body.username]){
-      users[req.body.username]= {password: req.body.password}
-      await DB.addUser(user)
+      //users[req.body.username]= {password: req.body.password}
+     let user = await createUser(req.body.username, req.body.password)
+      
       return res.status(200).json({msg:"success"})}
       else{
         return res.status(409).json({ msg: 'User already exists' });
   } 
   }
 
+async function createUser(username, password) {
 
+  let user = {
+    username: username,
+    password: password,
+  };
+  await DB.addUser(user);
+
+  return user;
+}
   
 })
 

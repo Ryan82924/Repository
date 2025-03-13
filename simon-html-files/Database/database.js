@@ -9,7 +9,7 @@ const userCollection = db.collection('user');
 const scoreCollection = db.collection('score');
 
 
-async function main (){
+
     try {
         await db.command({ ping: 1 });
         console.log(`DB connected to ${config.hostname}`);
@@ -33,15 +33,18 @@ async function main (){
    
       
 
-      
-const cursor = collection.find(query, options);
-const rentals = await cursor.toArray();
-rentals.forEach((i) => console.log(i));
-await collection.deleteMany(query);
 
-const insertResult = await collection.insertOne(house);
-await collection.deleteOne({ _id: insertResult.insertedId });
 
 await client.close() 
-}
-main()
+
+
+
+module.exports = {
+   getUser,
+   getUserByToken,
+   addUser,
+   updateUser,
+   addScore,
+   getHighScores,
+ };
+ 
