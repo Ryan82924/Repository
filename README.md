@@ -114,12 +114,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ x ] **Node.js/Express HTTP service** - I did complete this part of the deliverable.
-- [ x ] **Static middleware for frontend** - I did complete this part of the deliverable.
-- [ x ] **Calls to third party endpoints** - I did complete this part of the deliverable.
-- [ x ] **Backend service endpoints** - I did complete this part of the deliverable.
-- [ x ] **Frontend calls service endpoints** - I did complete this part of the deliverable.
-- [ x ] **Supports registration, login, logout, and restricted endpoint - I did complete this part of the deliverable.
+- [ x ] **Node.js/Express HTTP service** - I did complete this part of the deliverable. The site uses expresses for the backend. 
+- [ x ] **Static middleware for frontend** - I did complete this part of the deliverable. The site uses middleware functions in the front end.
+- [ x ] **Calls to third party endpoints** - I did complete this part of the deliverable. The site uses third party endpoints (specifically in the TaskItem.jsx file in the To-Do folder.) Calls to a fact api. 
+- [ x ] **Backend service endpoints** - I did complete this part of the deliverable. Uses backend service endpoints to accomplish tasks in the site like logging in and authorization. 
+- [ x ] **Frontend calls service endpoints** - I did complete this part of the deliverable. The frontend features fetches to the backend and uses those fetches appropriately to accomplish tasks like creating tasks and logging in. 
+- [ x ] **Supports registration, login, logout, and restricted endpoint - I did complete this part of the deliverable. The site features restricted endpoints and registration, login and logout. 
 <!--##
 ## 🚀 DB/Login deliverable
 
