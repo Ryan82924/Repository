@@ -39,7 +39,7 @@ async function passbackTask(endpoint){
       
 
     method: 'POST',
-      body: JSON.stringify({ task: taskText,}),
+      body: JSON.stringify({ task: taskText, completed: false  }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
     

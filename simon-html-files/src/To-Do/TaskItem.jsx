@@ -42,7 +42,16 @@ else{
               {
                 let prevComplete = task.completed
                 task.completed = !task.completed
+                fetch('/api/completed',{
+                  method: 'POST',
+                  body: JSON.stringify({ id: task.id, completed: task.completed,}),
+
+                  headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
                 
+                  }
+                  
+                })
 
               if (!prevComplete){
                 setScore(prevScore => {

@@ -199,33 +199,51 @@ apiRouter.delete('/logout', async (req, res) => {
   }
 })*/
 
+apiRouter.post('/completed', async (req, res) => { 
+  let user = await findUser('token', req.cookies[authCookieName] );
+  const task = user.tasks.find(task => task.id === req.body.id);
+  if (task){
+    task.completed = req.body.completed
+    await DB.updateUser(user);
+    return res.status(200).json({msg:"success", task})
+  }
+else {
+    return res.status(404).json({msg:"Task not found"})
+  }
+
+})
 
 apiRouter.post('/tasks', async (req, res) => {
-  let user = await findUser('username', req.body.username);
+  let user = await findUser('token', req.cookies[authCookieName] );
   const { v4: uuidv4 } = require('uuid');
   let newTask = {
     id: uuidv4(),
     text: req.body.task,
-    completed: false
+    completed: req.body.completed
 
   }
 
   if (!req.body.task){
     return res.status(400).json({msg:"please input task"})
   }
+  if(!user){
+    return res.status(404).json({msg:"Could not find user."})
+  }
   else{
-    if (!user.tasks){
-      user = Object.assign(user, { tasks: [] })
-      await DB.updateUser(user)
-      user.tasks.push(newTask)
-      await DB.updateUser(user)
-    }
     if (user.tasks){
       user.tasks.push(newTask)
-      await DB.updateUser(user)
+      
     }
+    if (!user.tasks){
+      
+      user.tasks = [];
+      
+      user.tasks.push(newTask)
+      
+    }
+    await DB.updateUser(user)
     
-    return res.status(200).json({msg:"successfully added task", user.tasks})
+    return res.status(200).json({msg:"successfully added task", tasks: user.tasks})
 
   }
 })
