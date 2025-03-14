@@ -71,14 +71,12 @@ apiRouter.get('/test', (_req, res) => {
 apiRouter.post('/create', async (req, res) => {
   console.log("create request received")
   if (req.body.username && req.body.password){
-    if (!users[req.body.username]){
-      //users[req.body.username]= {password: req.body.password}
+    if (await DB.getUser(req.body.username) === null){
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
-     let user = await createUser(req.body.username, hashedPassword)
-      
-      return res.status(200).json({msg:"success"})}
-      else{
-        return res.status(409).json({ msg: 'User already exists' });
+      let user = await createUser(req.body.username, hashedPassword)
+    return res.status(200).json({msg:"success"})}
+    else{
+      return res.status(409).json({ msg: 'User already exists' });
   } 
   }
 
@@ -171,10 +169,10 @@ apiRouter.delete('/logout', async (req, res) => {
   let user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
-    DB.updateUser(user);
+    DB.differentUpdateUser(user);
   }
   res.clearCookie(authCookieName);
-  res.status(204).end();
+  return res.status(200).json({msg:"success", user})
 });
 
 
@@ -247,8 +245,18 @@ apiRouter.post('/tasks', async (req, res) => {
 
   }
 })
+apiRouter.get('/tasks',async (req,res) => {
+  let user = await findUser('token', req.cookies[authCookieName] );
+  if (user){
+    return res.status(200).json({msg:"successfully rendered", tasks: user.tasks})}
+  else{
+    return res.status(404).json({msg:"user not found"})
+  }
+  
 
-apiRouter.delete('/remove/tasks/:taskId', async (req, res) => {
+})
+
+/*apiRouter.delete('/remove/tasks/:taskId', async (req, res) => {
   if (!req.params.taskId){
     return res.status(400).json({msg:"something went wrong"})
 
@@ -267,19 +275,51 @@ apiRouter.delete('/remove/tasks/:taskId', async (req, res) => {
     return res.status(200).json({msg: "task removed", tasks})
 
   }
+})*/
+
+apiRouter.delete('/remove/tasks/:taskId', async (req, res) => {
+  let user = await findUser('token', req.cookies[authCookieName] );
+  if (!req.params.taskId){
+    return res.status(400).json({msg:"something went wrong"})
+  }
+  if (!user.tasks){
+    return res.status(404).json({msg:"no tasks found"})
+  }
+  else{
+    user.tasks = user.tasks.filter(task => task.id !== req.params.taskId)
+    await DB.updateUser(user)
+    
+    
+    //console.log(req.params.taskId)
+    //console.log(tasks.map(task=>task.id))
+    
+    return res.status(200).json({msg: "task removed", tasks: user.tasks})
+
+  }
 })
 
 
 
 
-apiRouter.post('/score/:taskId', async (req, res) => {
+/*apiRouter.post('/score/:taskId', async (req, res) => {
  
   
   if (req.body.score !== undefined) {
-
     score = req.body.score;
     console.log(score)
     return res.status(200).json({ msg: "Updated score", score });
+  } else {
+    return res.status(400).json({ msg: "Invalid score update", receivedTaskId: req.body.id });
+  }
+});*/
+
+apiRouter.post('/score/:taskId', async (req, res) => {
+  let user = await findUser('token', req.cookies[authCookieName] );
+  if (req.body.score !== undefined) {
+    user.score = req.body.score;
+    await DB.updateUser(user)
+    console.log(user.score)
+    return res.status(200).json({ msg: "Updated score", score: user.score });
   } else {
     return res.status(400).json({ msg: "Invalid score update", receivedTaskId: req.body.id });
   }

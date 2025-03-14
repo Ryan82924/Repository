@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import '../app.css';
 
@@ -49,7 +49,7 @@ async function passbackTask(endpoint){
     const data = await response.json(); 
     if (response?.status === 200){
       setTasks(data.tasks);
-      console.log(data)
+      console.log(data.tasks)
       
         
 
@@ -58,6 +58,26 @@ async function passbackTask(endpoint){
 
     }
   }
+  useEffect(() => {
+    async function fetchTask(){
+      let response = await fetch('/api/tasks', {method: 'GET'})
+      
+
+      const data = await response.json(); 
+    if (response?.status === 200){
+      setTasks(data.tasks);
+      console.log(data.tasks)
+      
+        
+    }else{
+      console.log(data)
+
+    }
+  
+
+    }
+    fetchTask()
+  }, []);
     return(
     <section>
 

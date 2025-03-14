@@ -36,6 +36,10 @@ const taskCollection = db.collection('task');
    async function updateUser(user) {
      await userCollection.updateOne({ username: user.username }, { $set: user });
    }
+
+   async function differentUpdateUser(user) {
+    await userCollection.updateOne({ username: user.username }, { $unset: {token: ""} });
+  }
    
       
 
@@ -50,5 +54,6 @@ module.exports = {
    getUserByToken,
    addUser,
    updateUser,
+   differentUpdateUser
  };
  

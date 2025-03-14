@@ -37,7 +37,11 @@ export default function Login(props) {
       localStorage.setItem('username',username)
         
 
-    }else{
+    }
+    if (response?.status === 409){
+      alert("user already exists")
+    }
+    else{
       console.log(data)
 
     }
