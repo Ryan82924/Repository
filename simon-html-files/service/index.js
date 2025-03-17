@@ -316,9 +316,23 @@ apiRouter.delete('/remove/tasks/:taskId', async (req, res) => {
 apiRouter.post('/score/:taskId', async (req, res) => {
   let user = await findUser('token', req.cookies[authCookieName] );
   if (req.body.score !== undefined) {
-    user.score = req.body.score;
-    await DB.updateUser(user)
+    let userScore = await DB.getScore(req.cookies[authCookieName]);
+    if (!Number(userScore) || userScore === null){
+      userScore= 0
+    }
+    
+    console.log("Received score update:", req.body.score);
+    user.score = userScore + req.body.score
+    await DB.singleValueUpdateUser(user)
     console.log(user.score)
+    return res.status(200).json({ msg: "Updated score", score: user.score });
+  } else {
+    return res.status(400).json({ msg: "Invalid score update", receivedTaskId: req.body.id });
+  }
+});
+apiRouter.get('/score/', async (req, res) => {
+  let user = await findUser('token', req.cookies[authCookieName] );
+  if (user) {
     return res.status(200).json({ msg: "Updated score", score: user.score });
   } else {
     return res.status(400).json({ msg: "Invalid score update", receivedTaskId: req.body.id });

@@ -28,6 +28,10 @@ const taskCollection = db.collection('task');
    function getUser(username) {
      return userCollection.findOne({ username: username });
    }
+   async function getScore(token) {
+    let user = await userCollection.findOne({ token:token})
+    return user.score
+  }
 
    function getUserByToken(token) {
      return userCollection.findOne({ token: token });
@@ -39,6 +43,9 @@ const taskCollection = db.collection('task');
 
    async function differentUpdateUser(user) {
     await userCollection.updateOne({ username: user.username }, { $unset: {token: ""} });
+  }
+  async function singleValueUpdateUser(user) {
+    await userCollection.updateOne({ username: user.username }, { $set: {score: user.score} });
   }
    
       
@@ -54,6 +61,8 @@ module.exports = {
    getUserByToken,
    addUser,
    updateUser,
-   differentUpdateUser
+   differentUpdateUser,
+   singleValueUpdateUser,
+   getScore,
  };
  

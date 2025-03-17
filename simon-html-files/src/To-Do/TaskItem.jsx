@@ -61,7 +61,7 @@ else{
                   fetch(`/api/score/${id}`, {
   
                     method: 'POST',
-                      body: JSON.stringify({ id, score: prevScore,}),
+                      body: JSON.stringify({ id, score: prevComplete ? -1 : +1 ,}),
                       
                       headers: {
                         'Content-type': 'application/json; charset=UTF-8',
@@ -81,7 +81,7 @@ else{
                   fetch(`/api/score/${id}`, {
   
                     method: 'POST',
-                      body: JSON.stringify({ id, score: prevScore,}),
+                      body: JSON.stringify({ id, score: prevComplete ? -1 : +1,}),
                       
                       headers: {
                         'Content-type': 'application/json; charset=UTF-8',
