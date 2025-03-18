@@ -245,7 +245,7 @@ apiRouter.post('/tasks', async (req, res) => {
 
   }
 })
-apiRouter.get('/tasks',async (req,res) => {
+apiRouter.get('/tasks', verifyAuth, async (req,res) => {
   let user = await findUser('token', req.cookies[authCookieName] );
   if (user){
     return res.status(200).json({msg:"successfully rendered", tasks: user.tasks})}
@@ -358,3 +358,13 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 //test
+
+const verifyAuth = async (req, res, next) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    req.user = user;  
+    next();  
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+};

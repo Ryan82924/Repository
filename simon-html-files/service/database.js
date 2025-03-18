@@ -6,8 +6,7 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('To-Do');
 const userCollection = db.collection('user');
-const scoreCollection = db.collection('score');
-const taskCollection = db.collection('task');
+
 
 
 
@@ -22,7 +21,7 @@ const taskCollection = db.collection('task');
 })();
 
    async function addUser(user) {
-      await userCollection.insertOne(user); // adds user object
+      await userCollection.insertOne(user); // adds user object 
    }
 
    function getUser(username) {
