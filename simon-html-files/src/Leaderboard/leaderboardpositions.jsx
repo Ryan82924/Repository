@@ -28,10 +28,37 @@ class LeaderBoardChangeNotifier {
     }, 1000)
   }
 
+  /*class LeaderboardChangeNotifier {
+    events = [];
+    handlers = [];
+  
+    constructor() {
+      let port = window.location.port;
+      const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+      this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+      this.socket.onopen = (event) => {
+        this.receiveEvent(new EventMessage('To-do', GameEvent.System, { msg: 'connected' }));
+      };
+      this.socket.onclose = (event) => {
+        this.receiveEvent(new EventMessage('To-do', GameEvent.System, { msg: 'disconnected' }));
+      };
+      this.socket.onmessage = async (msg) => {
+        try {
+          const event = JSON.parse(await msg.data.text());
+          this.receiveEvent(event);
+        } catch {}
+      };
+    }*/
+
   broadcastEvent(from, type, value) {
     const event = new EventMessage(from, type, value)
     this.handlers.forEach((handler) => handler(event))
   }
+
+  /*broadcastEvent(from, type, value) {
+    const event = new EventMessage(from, type, value);
+    this.socket.send(JSON.stringify(event));
+  } */
 
   addHandler(handler) {
     if (!this.handlers.includes(handler)) {
@@ -43,6 +70,12 @@ class LeaderBoardChangeNotifier {
     this.handlers = this.handlers.filter((h) => h !== handler)
   }
 }
+
+/*receiveEvent(event) {
+    this.events.push(event);
+    this.handlers.forEach((handler) => handler(event));
+  }
+} */
 
 const LeaderboardNotifier = new LeaderBoardChangeNotifier()
 
@@ -94,6 +127,33 @@ export function LeaderboardPositions(){
     })
 
   }
+
+  /*function handleLeaderboard(event){
+    setLeaderboard((prevLeaderboard) => {
+      
+      let newLeaderboard = prevLeaderboard.slice(); 
+    
+     newLeaderboard = newLeaderboard.filter(user => user.username)
+     
+    let user = newLeaderboard.find((user)=>user.username === event.value.name)
+    if (user){
+      user.score = event.value.score}
+    else 
+    {newLeaderboard.push({username: event.value.name, score: event.value.score})}
+        
+     
+      newLeaderboard = newLeaderboard.sort((a,b) => b.score-a.score)
+      newLeaderboard = newLeaderboard.slice(0, 3);
+      console.log(newLeaderboard, "lb after slicing")
+      localStorage.setItem('leaderboard', JSON.stringify(newLeaderboard))
+      return newLeaderboard
+    })
+
+  } */
+
+  /* function handleGameEvent(event) {
+    setEvent([...events, event]);
+  } */
 
   useEffect(() => {
     LeaderboardNotifier.addHandler(handleLeaderboard)
