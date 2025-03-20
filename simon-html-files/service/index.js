@@ -4,7 +4,6 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
-const { use } = require('react');
 
 
 
@@ -15,6 +14,16 @@ let score = 0;
 //let tasks = []
 
 // auth stuff
+
+const verifyAuth = async (req, res, next) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    req.user = user;  
+    next();  
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+};
 
 const authCookieName = 'token';
 function setAuthCookie(res){
@@ -359,12 +368,3 @@ app.listen(port, () => {
 });
 //test
 
-const verifyAuth = async (req, res, next) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
-  if (user) {
-    req.user = user;  
-    next();  
-  } else {
-    res.status(401).send({ msg: 'Unauthorized' });
-  }
-};
