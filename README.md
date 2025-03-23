@@ -13,6 +13,8 @@ For React Part 2 I learned a lot about the syntax requirements (syntax errors/de
 in addition I felt like I learned a lot about JS functions and react specific functions as well. I felt like so far this part of the project has helped me to learn the most out of all of the parts. 
 
 For Simon Service I felt like I learned a lot about working between the front and the backend. Once again the syntax errors and the debugging took a lot of time for me. I also felt like I learned a lot more about async code and await. Which was something that I was a little confused about before but I felt like I got a better hold of during this process. I also felt like I learned a bit about debugging code and writing better JS/react since this section was almost entirely made of JS.  
+
+For the Database I felt like I learned a lot from it, particularly about how to establish the database connection with the service and how websites interact with a database to store information. I also felt like I learned a lot about how the importance of directly affecting objects vs making copies. I often unintentionally made copies and the database would not receive the updates if I updated the copies. 
 -->
 
 
@@ -120,14 +122,14 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ x ] **Backend service endpoints** - I did complete this part of the deliverable. Uses backend service endpoints to accomplish tasks in the site like logging in and authorization. 
 - [ x ] **Frontend calls service endpoints** - I did complete this part of the deliverable. The frontend features fetches to the backend and uses those fetches appropriately to accomplish tasks like creating tasks and logging in. 
 - [ x ] **Supports registration, login, logout, and restricted endpoint - I did complete this part of the deliverable. The site features restricted endpoints and registration, login and logout. 
-<!--##
+
 ## 🚀 DB/Login deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
-.
+- [ x ] **Stores data in MongoDB** - I did complete this part of the deliverable. Stores the tasks that belongs to each user as well as their completed state and the total score that the user has. 
+- [ x ] **Stores credentials in MongoDB** - I did complete this part of the deliverable. Stores the token of the user and removes it when logged out. Also stores the hashed password and the username of the user. 
 
+<!--##
 ## 🚀 WebSocket deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.

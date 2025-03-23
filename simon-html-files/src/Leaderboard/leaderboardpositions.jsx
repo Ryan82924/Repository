@@ -31,7 +31,9 @@ class LeaderBoardChangeNotifier {
   /*class LeaderboardChangeNotifier {
     events = [];
     handlers = [];
-  
+  // will need to take this constructore and remove 
+  // the interval function taking in the event data
+
     constructor() {
       let port = window.location.port;
       const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
@@ -146,6 +148,7 @@ export function LeaderboardPositions(){
       newLeaderboard = newLeaderboard.slice(0, 3);
       console.log(newLeaderboard, "lb after slicing")
       localStorage.setItem('leaderboard', JSON.stringify(newLeaderboard))
+      
       return newLeaderboard
     })
 
