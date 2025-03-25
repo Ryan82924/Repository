@@ -196,7 +196,7 @@ async doLoginOrCreate(endpoint, username, password){
             <input className = "bottommargins size-increase" type="text" id="username" placeholder = "username" name="username" value = {username} onChange={(e) => setUsername(e.target.value)} /> 
           </div>
           <div>
-            <input className ="topmargins size-increase" type="password" placeholder="password (database placeholder)" value = {password} onChange={(e) => setPassword(e.target.value)} />
+            <input className ="topmargins size-increase" type="password" placeholder="password" value = {password} onChange={(e) => setPassword(e.target.value)} />
           </div>
           <button type="submit" className = "extratopmargins extrabottommargins size-increase coolColoredButtons somePaddingOnTheSides" value = "login" >Login</button>
           <button type="submit" className = "extratopmargins extrabottommargins size-increase coolColoredButtons somePaddingOnTheSides" value = "create">Create</button>

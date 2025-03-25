@@ -2,7 +2,10 @@ import React , { useState, useEffect } from 'react';
 
 import '../app.css';
 
-
+const LeaderboardChanger = {
+  System: 'System',
+  ScoreUpdate: 'ScoreUpdate',
+};
 const LeaderBoardChange = {
   End: 'LeaderboardEnd', 
 }
@@ -14,19 +17,55 @@ class EventMessage {
   }
 }
 
+
 class LeaderBoardChangeNotifier {
+  broadcastEvent(from, type, value) {
+    const event = new EventMessage(from, type, value)
+    this.handlers.forEach((handler) => handler(event))
+  }
+  removeHandler(handler) {
+    this.handlers = this.handlers.filter((h) => h !== handler)
+  }
+  addHandler(handler) {
+    if (!this.handlers.includes(handler)) {
+      this.handlers.push(handler)
+    }
+  }
+
+  receiveEvent(event) {
+    this.events.push(event);
+    this.handlers.forEach((handler) => handler(event));
+  }
   handlers = []
   usernames = ["Doughnutdog ", "Doughnutcat ", "Doughnut "]
   getRandomUser(){
     return this.usernames[Math.floor(Math.random() * this.usernames.length)]
   }
-  constructor() {
+  /*constructor() {
     setInterval(() => {
       const score = Math.floor(Math.random() * 3000)
       const userName = this.getRandomUser()
       this.broadcastEvent(userName, LeaderBoardChange.End, { name: userName, score });
     }, 1000)
-  }
+    
+  }*/
+
+  constructor() {
+    let port = window.location.port;
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+    this.socket.onopen = (event) => {
+      this.receiveEvent(new EventMessage('To-do', LeaderboardChanger.System, { msg: 'connected' }));
+    };
+    this.socket.onclose = (event) => {
+      this.receiveEvent(new EventMessage('To-do', LeaderboardChanger.System, { msg: 'disconnected' }));
+    };
+    this.socket.onmessage = async (msg) => {
+      try {
+        const event = JSON.parse(await msg.data.text());
+        this.receiveEvent(event);
+      } catch {}
+    };
 
   /*class LeaderboardChangeNotifier {
     events = [];
@@ -52,32 +91,20 @@ class LeaderBoardChangeNotifier {
       };
     }*/
 
-  broadcastEvent(from, type, value) {
-    const event = new EventMessage(from, type, value)
-    this.handlers.forEach((handler) => handler(event))
-  }
+  
 
   /*broadcastEvent(from, type, value) {
     const event = new EventMessage(from, type, value);
     this.socket.send(JSON.stringify(event));
   } */
 
-  addHandler(handler) {
-    if (!this.handlers.includes(handler)) {
-      this.handlers.push(handler)
-    }
-  }
+  
 
-  removeHandler(handler) {
-    this.handlers = this.handlers.filter((h) => h !== handler)
-  }
+  
 }
 
-/*receiveEvent(event) {
-    this.events.push(event);
-    this.handlers.forEach((handler) => handler(event));
-  }
-} */
+
+} 
 
 const LeaderboardNotifier = new LeaderBoardChangeNotifier()
 
