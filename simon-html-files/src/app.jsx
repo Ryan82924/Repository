@@ -38,9 +38,9 @@ export default function App() {
 
 
 
-      <Route path='/todo' element={auth ? <Todo /> : <Login />} />
-      <Route path='/leaderboard' element={auth ? <Leaderboard /> : <Login />} />
-      <Route path='*' element={auth ? <NotFound /> : <Login />} />
+      <Route path='/todo' element={auth ? <Todo /> : <Login auth = {auth} setAuth = {setAuth} />} />
+      <Route path='/leaderboard' element={auth ? <Leaderboard /> : <Login auth = {auth} setAuth = {setAuth} />} />
+      <Route path='*' element={auth ? <NotFound /> : <Login auth = {auth} setAuth = {setAuth} />} />
 
 
       :

@@ -4,6 +4,8 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
+const { peerProxy, broadcastEvents  } = require('./peerProxy.js');
+
 
 
 
@@ -12,6 +14,7 @@ const DB = require('./database.js');
 let users = {};
 let score = 0;
 //let tasks = []
+
 
 // auth stuff
 
@@ -332,6 +335,11 @@ apiRouter.post('/score/:taskId', async (req, res) => {
     
     console.log("Received score update:", req.body.score);
     user.score = userScore + req.body.score
+    broadcastEvents({
+      from: user.username,
+      type: 'LeaderboardEnd',
+      value: { name: user.username, score: user.score }
+    })
     await DB.singleValueUpdateUser(user)
     console.log(user.score)
     return res.status(200).json({ msg: "Updated score", score: user.score });
@@ -361,10 +369,31 @@ apiRouter.get('/auth', async (req, res) => {
   }
 })
 
+apiRouter.get('/usernameis', async (req, res) => {
+
+  console.log("request for username received")
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user){
+    return res.status(200).send({username: user.username})
+  }
+  else{
+    return res.status(401).send();
+  }
+  
+})
+
+apiRouter.get('/highscores', async (req, res) => {
+  let scores = await DB.getHighScores()
+  res.json(scores);
+})
 
 
-app.listen(port, () => {
+
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+peerProxy(httpService);
+
 //test
 

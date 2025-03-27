@@ -9,6 +9,34 @@ export function CurrentUser() {
 
   const [score, setScore] = useState(0);
   const [username, setUsername] = useState('Test Username Placeholder');
+
+async function getUsername(){
+    console.log("frontend console")
+    const response = await fetch(`/api/usernameis`, {
+
+    method: 'GET',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      credentials: "include"
+    })
+    const data = await response.json(); 
+    if (response?.status === 200){
+      setUsername(data.username)
+      console.log("ahhhhhh")
+    }else{
+      console.log(data)
+      alert(data)
+    }
+  }
+
+useEffect(()=>{
+getUsername()
+},[])
+
+
+
+
   /*useEffect(() => {
 
     let intervals = setInterval(() => {
@@ -47,9 +75,9 @@ export function CurrentUser() {
     
     return(
       <div className="leaderboard-entry-current-user">
-      <span> Unranked </span> 
-      <span id="current-name "> {username} ( placeholder for the Current user's name. updated live via Websocket)</span>
-      <span id="current-score "> {score} ( placeholder for the Current user's tasks completed. updated live via Websocket) </span> 
+      <span> Unranked  </span> &nbsp;
+      <span id="current-name "> {username}</span>&nbsp;
+      <span id="current-score "> Score:  {score} </span> 
     
     </div>
   );

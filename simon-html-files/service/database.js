@@ -32,12 +32,25 @@ const userCollection = db.collection('user');
     return user.score
   }
 
+  
+
    function getUserByToken(token) {
      return userCollection.findOne({ token: token });
    }
 
    async function updateUser(user) {
      await userCollection.updateOne({ username: user.username }, { $set: user });
+   }
+
+
+   function getHighScores() {
+     const query = { score: { $gt: 0, $lt: 900 } };
+     const options = {
+       sort: { score: -1 },
+       limit: 3,
+     };
+     const cursor = userCollection.find(query, options);
+     return cursor.toArray();
    }
 
    async function differentUpdateUser(user) {
@@ -63,5 +76,6 @@ module.exports = {
    differentUpdateUser,
    singleValueUpdateUser,
    getScore,
+   getHighScores,
  };
  
