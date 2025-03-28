@@ -14,6 +14,7 @@ class EventMessage {
   
   
   class LeaderBoardChangeNotifier {
+    
     broadcastEvent(from, type, value) {
       const event = new EventMessage(from, type, value)
       this.handlers.forEach((handler) => handler(event))
@@ -28,15 +29,18 @@ class EventMessage {
     }
   
     receiveEvent(event) {
+        console.log("receiving event here", event)
       this.events.push(event);
-      this.handlers.forEach((handler) => {handler(event);});
+      this.handlers.forEach((handler) => {
+        console.log("adding event to handler", event);
+        handler(event);});
     }
     handlers = []
     constructor() {
       this.events = [];
       let port = window.location.port;
       const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-      this.socket = new WebSocket('ws://localhost:4000/ws');
+      this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
       this.socket.onopen = (event) => {
         this.receiveEvent(new EventMessage('To-do', LeaderboardChanger.System, { msg: 'connected' }));
       };
@@ -45,11 +49,12 @@ class EventMessage {
       };
       this.socket.onmessage = async (msg) => {
         try {
-          const event = JSON.parse(await msg.data.text());
+          const event = JSON.parse(msg.data);
           this.receiveEvent(event);
         } catch {}
+        
       };
-    
+      
   
     
   

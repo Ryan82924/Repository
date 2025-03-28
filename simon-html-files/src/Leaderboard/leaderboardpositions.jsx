@@ -7,9 +7,7 @@ import { LeaderboardNotifier } from './LeaderboardNotifier';
   System: 'System',
   ScoreUpdate: 'ScoreUpdate',
 };*/
-const LeaderBoardChange = {
-  End: 'LeaderboardEnd', 
-}
+
 /*class EventMessage {
   constructor(from, type, value) {
     this.from = from;
@@ -47,7 +45,7 @@ class LeaderBoardChangeNotifier {
     this.events = [];
     let port = window.location.port;
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-    this.socket = new WebSocket('ws://localhost:4000/ws');
+    this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
     this.socket.onopen = (event) => {
       this.receiveEvent(new EventMessage('To-do', LeaderboardChanger.System, { msg: 'connected' }));
     };
@@ -103,7 +101,9 @@ const LeaderboardNotifier = new LeaderBoardChangeNotifier()
 window.LeaderboardNotifier = LeaderboardNotifier;
 */
 
-
+const LeaderBoardChange = {
+  End: 'LeaderboardEnd', 
+}
 export function LeaderboardPositions(){
   const [leaderboard, setLeaderboard] = useState([])
   /* function handleGameChange(event) {
@@ -115,6 +115,10 @@ export function LeaderboardPositions(){
     return newEvents;
   });
 }*/
+
+
+
+
   function handleLeaderboard(event){
     setLeaderboard((prevLeaderboard) => {
       
@@ -170,6 +174,7 @@ export function LeaderboardPositions(){
     async function getTopScores(){
       let response = await fetch('/api/highscores')
       const data = await response.json();
+      console.log("top scores", data)
       setLeaderboard(data);
     }
     getTopScores()

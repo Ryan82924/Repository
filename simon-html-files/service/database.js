@@ -46,6 +46,7 @@ const userCollection = db.collection('user');
    function getHighScores() {
      const query = { score: { $gt: 0, $lt: 900 } };
      const options = {
+      projection: { username: 1, score: 1, _id: 0 },
        sort: { score: -1 },
        limit: 3,
      };
