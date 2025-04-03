@@ -355,7 +355,14 @@ apiRouter.get('/score/', async (req, res) => {
     return res.status(400).json({ msg: "Invalid score update", receivedTaskId: req.body.id });
   }
 });
+app.use(function (err, req, res, next) {
+  res.status(500).send({ type: err.name, message: err.message });
+});
 
+
+app.use((_req, res) => {
+  res.sendFile('index.html', { root: 'public' });
+});
 
 apiRouter.get('/auth', async (req, res) => {
   console.log("cookies received:", req.cookies);

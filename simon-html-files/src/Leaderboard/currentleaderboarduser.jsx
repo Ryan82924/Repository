@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { LeaderboardNotifier } from './LeaderboardNotifier';
 import '../app.css';
 
 
@@ -37,6 +38,7 @@ getUsername()
 
 
 
+
   /*useEffect(() => {
 
     let intervals = setInterval(() => {
@@ -71,6 +73,33 @@ getUsername()
   }
   
   getCurrentScore()},[score])
+
+  function handleLeaderboard(event){
+    if (username === event.value.name){
+      setScore(event.value.score)
+    }
+  }
+
+useEffect(() => {
+  async function getCurrentScore(){
+    let response = await fetch('/api/score', {method: 'GET'})
+    
+    const data = await response.json(); 
+  if (response?.status === 200){
+    setScore(data.score);
+    console.log(data.score)
+  }else{
+    console.log(data)
+  }
+  }
+  getCurrentScore()
+
+    LeaderboardNotifier.addHandler(handleLeaderboard)
+    return () => {
+        LeaderboardNotifier.removeHandler(handleLeaderboard)
+    }
+  }, [username])
+
     
     
     return(

@@ -131,6 +131,16 @@ export function LeaderboardPositions(){
       user.score = event.value.score}
     else 
     {newLeaderboard.push({username: event.value.name, score: event.value.score})}
+
+    async function getTopScores(){
+      let response = await fetch('/api/highscores')
+      const data = await response.json();
+      console.log("top scores", data)
+      setLeaderboard(data);
+    }
+    getTopScores()
+
+    
         
      
       newLeaderboard = newLeaderboard.sort((a,b) => b.score-a.score)
