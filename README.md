@@ -15,6 +15,8 @@ in addition I felt like I learned a lot about JS functions and react specific fu
 For Simon Service I felt like I learned a lot about working between the front and the backend. Once again the syntax errors and the debugging took a lot of time for me. I also felt like I learned a lot more about async code and await. Which was something that I was a little confused about before but I felt like I got a better hold of during this process. I also felt like I learned a bit about debugging code and writing better JS/react since this section was almost entirely made of JS.  
 
 For the Database I felt like I learned a lot from it, particularly about how to establish the database connection with the service and how websites interact with a database to store information. I also felt like I learned a lot about how the importance of directly affecting objects vs making copies. I often unintentionally made copies and the database would not receive the updates if I updated the copies. 
+
+For the Websocket I learned a lot about how the websocket instances work and how to implement them in the website. I learned a lot about using the development environment to examine data actively in the website. (I needed to do this to see if the WS was working.) I also learned a lot about debugging and stepping through code as I needed to debug the WS quite a bit to get it to work. This was defintely the most complex deliverable for me as there were a lot of steps, especially in getting the WS set up and getting it to connect.  
 -->
 
 
@@ -129,13 +131,13 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ x ] **Stores data in MongoDB** - I did complete this part of the deliverable. Stores the tasks that belongs to each user as well as their completed state and the total score that the user has. 
 - [ x ] **Stores credentials in MongoDB** - I did complete this part of the deliverable. Stores the token of the user and removes it when logged out. Also stores the hashed password and the username of the user. 
 
-<!--##
+
 ## 🚀 WebSocket deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.-->
+- [ x ] **Backend listens for WebSocket connection** - I did complete this part of the deliverable. The backend listens for the Websocket connection, it sets up the connection and listens for it successfully. 
+- [ x ] **Frontend makes WebSocket connection** - I did complete this part of the deliverable. The network tab in the frontend shows pending which means the WS has made the connection and is listening for data. 
+- [ x ] **Data sent over WebSocket connection** - I did complete this part of the deliverable. Data is sent over the connection. If you click on the network tab and the WS connection you can see what data.
+- [ x ] **WebSocket data displayed** - I did complete this part of the deliverable. The data is used to update the leaderboard. It updates without needing to refresh, a property of WS. 
+- [ x ] **Application is fully functional** - I did complete this part of the deliverable. The application works just as planned!

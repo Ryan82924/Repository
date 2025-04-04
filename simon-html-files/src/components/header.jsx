@@ -36,7 +36,7 @@ export default function Header({auth, setAuth}) {
   },[])*/
   useEffect(()=>{
     
-    if (auth) {
+    if (auth && location.pathname === '/') {
       navigate('/todo');
 }},[auth])
     return( <header className="top-bar">
