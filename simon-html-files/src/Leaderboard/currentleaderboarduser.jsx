@@ -104,7 +104,7 @@ useEffect(() => {
     
     return(
       <div className="leaderboard-entry-current-user">
-      <span> Unranked  </span> &nbsp;
+      <span> Current User:  </span> &nbsp;
       <span id="current-name "> {username}</span>&nbsp;
       <span id="current-score "> Score:  {score} </span> 
     
