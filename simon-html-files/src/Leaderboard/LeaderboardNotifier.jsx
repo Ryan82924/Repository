@@ -36,7 +36,26 @@ class EventMessage {
         handler(event);});
     }
     handlers = []
+    
     constructor() {
+      this.events = [];
+      let port = window.location.port;
+      const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+      this.socket = new WebSocket(`${protocol}://${port}/ws`);
+      this.socket.onopen = () => {
+        this.receiveEvent(new EventMessage('To-do', LeaderboardChanger.System, { msg: 'connected' }));
+      };
+      this.socket.onclose = () => {
+        this.receiveEvent(new EventMessage('To-do', LeaderboardChanger.System, { msg: 'disconnected' }));
+      };
+      this.socket.onmessage = async (msg) => {
+        try {
+          const event = JSON.parse(msg.data.EventMessage);
+          this.receiveEvent(event);
+        } catch {}
+        
+      };
+    /*constructor() {
       this.events = [];
       let port = window.location.port;
       const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
@@ -53,7 +72,7 @@ class EventMessage {
           this.receiveEvent(event);
         } catch {}
         
-      };
+      };*/
       
   
     

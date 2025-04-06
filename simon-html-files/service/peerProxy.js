@@ -58,11 +58,11 @@ function peerProxy(httpServer) {
     });
   }, 10000);
 }
-function broadcastEvents(eventMessage){
+/*function broadcastEvents(eventMessage){
     wss.clients.forEach((client) => {
         client.send(JSON.stringify(eventMessage));
       });
-}
+}*/
 
 
 module.exports = { peerProxy, broadcastEvents };
