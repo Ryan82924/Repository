@@ -185,7 +185,7 @@ export function LeaderboardPositions(){
       let response = await fetch('/api/highscores')
       const data = await response.json();
       console.log("top scores", data)
-      setLeaderboard(data);
+      setLeaderboard(JSON.parse(data));
     }
     getTopScores()
     
