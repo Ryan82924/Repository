@@ -23,6 +23,7 @@ class EventMessage {
       this.handlers = this.handlers.filter((h) => h !== handler)
     }
     addHandler(handler) {
+      console.log("adding event handler")
       if (!this.handlers.includes(handler)) {
         this.handlers.push(handler)
       }

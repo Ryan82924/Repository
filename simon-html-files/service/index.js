@@ -391,6 +391,7 @@ apiRouter.get('/usernameis', async (req, res) => {
 
 apiRouter.get('/highscores', async (req, res) => {
   let scores = await DB.getHighScores()
+  console.log("scores are high here", scores)
   res.json(scores);
 })
 
