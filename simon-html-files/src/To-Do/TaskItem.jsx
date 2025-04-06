@@ -75,7 +75,7 @@ else{
               if (prevComplete){
                 setScore(prevScore=> {
                   prevScore = prevScore-1
-                  console.log(prevScore)
+                  console.log("updating score",prevScore)
                   localStorage.setItem('score', JSON.stringify(prevScore))
                   
                   fetch(`/api/score/${id}`, {

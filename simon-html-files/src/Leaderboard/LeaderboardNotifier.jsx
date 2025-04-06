@@ -20,6 +20,7 @@ class EventMessage {
       this.handlers.forEach((handler) => handler(event))
     }
     removeHandler(handler) {
+      console.log("removing event handler")
       this.handlers = this.handlers.filter((h) => h !== handler)
     }
     addHandler(handler) {
