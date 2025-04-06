@@ -61,6 +61,7 @@ function peerProxy(httpServer) {
 function broadcastEvents(eventMessage){
     wss.clients.forEach((client) => {
         client.send(JSON.stringify(eventMessage));
+        console.log("broadcasted")
       });
 }
 

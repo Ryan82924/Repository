@@ -33,6 +33,7 @@ export function LeaderboardPositions(){
       const data = await response.json();
       console.log("top scores", data)
       setLeaderboard(data);
+      console.log("leaderboard after getTop", leaderboard)
     }
     getTopScores()
 
