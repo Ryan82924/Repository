@@ -130,7 +130,7 @@ export function LeaderboardPositions(){
     if (user){
       user.score = event.value.score}
     else 
-    {newLeaderboard.push({username: event.value.name, score: event.value.score})}
+    {newLeaderboard.push({username: event.value.name, score: Number(event.value.score)})}
 
     async function getTopScores(){
       let response = await fetch('/api/highscores')
@@ -152,40 +152,14 @@ export function LeaderboardPositions(){
 
   }
 
-  /*function handleLeaderboard(event){
-    setLeaderboard((prevLeaderboard) => {
-      
-      let newLeaderboard = prevLeaderboard.slice(); 
-    
-     newLeaderboard = newLeaderboard.filter(user => user.username)
-     
-    let user = newLeaderboard.find((user)=>user.username === event.value.name)
-    if (user){
-      user.score = event.value.score}
-    else 
-    {newLeaderboard.push({username: event.value.name, score: event.value.score})}
-        
-     
-      newLeaderboard = newLeaderboard.sort((a,b) => b.score-a.score)
-      newLeaderboard = newLeaderboard.slice(0, 3);
-      console.log(newLeaderboard, "lb after slicing")
-      localStorage.setItem('leaderboard', JSON.stringify(newLeaderboard))
-      
-      return newLeaderboard
-    })
-
-  } */
-
-  /* function handleGameEvent(event) {
-    setEvent([...events, event]);
-  } */
+  
 
   useEffect(() => {
     async function getTopScores(){
       let response = await fetch('/api/highscores')
       const data = await response.json();
       console.log("top scores", data)
-      setLeaderboard(JSON.parse(data));
+      setLeaderboard(data);
     }
     getTopScores()
     
