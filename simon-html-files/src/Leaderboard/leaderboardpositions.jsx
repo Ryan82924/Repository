@@ -60,9 +60,10 @@ export function LeaderboardPositions(){
       setLeaderboard(data);
     }
     getTopScores()
-    
+    console.log("calling add on mount")
     LeaderboardNotifier.addHandler(handleLeaderboard)
     return () => {
+      console.log("calling remove on mount")
         LeaderboardNotifier.removeHandler(handleLeaderboard)
         
 
