@@ -44,10 +44,10 @@ class EventMessage {
       let port = window.location.port;
       const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
       this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
-      this.socket.onopen = (event) => {
+      this.socket.onopen = () => {
         this.receiveEvent(new EventMessage('To-do', LeaderboardChanger.System, { msg: 'connected' }));
       };
-      this.socket.onclose = (event) => {
+      this.socket.onclose = () => {
         this.receiveEvent(new EventMessage('To-do', LeaderboardChanger.System, { msg: 'disconnected' }));
       };
       this.socket.onmessage = async (msg) => {

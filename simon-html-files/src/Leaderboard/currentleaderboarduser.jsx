@@ -39,24 +39,7 @@ getUsername()
 
 
 
-  /*useEffect(() => {
-
-    let intervals = setInterval(() => {
-    let itemscore = localStorage.getItem('score');
-    
-    if (itemscore){
-      let scores = JSON.parse(itemscore);
-      (setScore(score => scores ))
-    }
-
-    
-    (setUsername(username))}, 1000);
-
-    return () => clearInterval(intervals);
-
-    
-
-    }, [score, username])*/
+  
     
 
   useEffect(()=>{
@@ -65,9 +48,9 @@ getUsername()
     
     const data = await response.json(); 
   if (response?.status === 200){
-    console.log("score before", score)
+    
     setScore(data.score);
-    console.log("fetched", data.score)
+    
   }else{
     console.log("failed to fetch",data)
   }
@@ -87,9 +70,9 @@ useEffect(() => {
     
     const data = await response.json(); 
   if (response?.status === 200){
-    console.log("score before", score)
+    
     setScore(data.score);
-    console.log("fetched", data.score)
+    
   }else{
     console.log("failed to fetch", data)
   }
