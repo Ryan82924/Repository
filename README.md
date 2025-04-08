@@ -137,7 +137,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [ x ] **Backend listens for WebSocket connection** - I did complete this part of the deliverable. The backend listens for the Websocket connection, it sets up the connection and listens for it successfully. 
-- [ x ] **Frontend makes WebSocket connection** - I did complete this part of the deliverable. The network tab in the frontend shows pending which means the WS has made the connection and is listening for data. 
+- [ x ] **Frontend makes WebSocket connection** - I did complete this part of the deliverable. The network tab in the frontend (leaderboard page) shows pending which means the WS has made the connection and is listening for data. 
 - [ x ] **Data sent over WebSocket connection** - I did complete this part of the deliverable. Data is sent over the connection. If you click on the network tab and the WS connection you can see what data.
 - [ x ] **WebSocket data displayed** - I did complete this part of the deliverable. The data is used to update the leaderboard. It updates without needing to refresh, a property of WS. 
 - [ x ] **Application is fully functional** - I did complete this part of the deliverable. The application works just as planned!

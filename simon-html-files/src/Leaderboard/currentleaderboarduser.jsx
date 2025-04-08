@@ -65,10 +65,11 @@ getUsername()
     
     const data = await response.json(); 
   if (response?.status === 200){
+    console.log("score before", score)
     setScore(data.score);
-    console.log(data.score)
+    console.log("fetched", data.score)
   }else{
-    console.log(data)
+    console.log("failed to fetch",data)
   }
   }
   
@@ -86,10 +87,11 @@ useEffect(() => {
     
     const data = await response.json(); 
   if (response?.status === 200){
+    console.log("score before", score)
     setScore(data.score);
-    console.log(data.score)
+    console.log("fetched", data.score)
   }else{
-    console.log(data)
+    console.log("failed to fetch", data)
   }
   }
   getCurrentScore()

@@ -8,7 +8,7 @@ export default function About() {
 
     return (
     <div className='fullpage'>
-    <Header />
+    
     <main>
       <p className = "fancy-text">picture of the app while I was making it</p>
       <div id="picture" className="picture-box"><img width="400px" src="applicationss-web260.jpg" alt="random" /></div>
